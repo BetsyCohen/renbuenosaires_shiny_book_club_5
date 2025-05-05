@@ -1,0 +1,96 @@
+---
+format:
+  revealjs: 
+    theme: [default, styles.scss]
+    width: 1280
+    height: 720
+    include-after-body: 
+      - "all-the-js-code.html"
+    revealjs-plugins:
+      - codewindow
+echo: false
+code-line-numbers: false
+footer: "Realizado con el <a href='https://github.com/EmilHvitfeldt/talk-socalrug-hackathon-feature-engineering' target='_blank'>template de emilhvitfeldt</a> para el <a href='https://github.com/RLadies-BA/mastering-shiny' target='_blank'>Club de lectura Mastering Shiny</a>  "
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+## User feedback {.theme-title .center}
+
+### Mastering Shiny Book Club
+
+Betsy Cohen & Ariana Bardauil
+
+## Objetivos de este encuentro
+
+::: {.speech .pink}
+![](assets/cat-theme/profile-01.svg) Recapitular encuentros anteriores
+:::
+
+:::: fragment
+::: {.speech .purple .right}
+Capítulo 8: User feedback ![](assets/cat-theme/profile-02.svg)
+:::
+::::
+
+# Encuentro 1 {.theme-section3}
+
+## Capítulos 1 y 2: Basic APP & Basic UI
+
+:::: fragment
+::: r-fit-text
+Construimos nuestra
+
+[primera aplicación]{.pink-shadow}
+
+en [shiny]{.blue-shadow}
+:::
+::::
+
+## Estructura básica
+
+<br>
+
+![](assets/cat-theme/head-01.svg){.absolute bottom="0" right="0"
+width="150" height="150"}
+
+::::::: columns
+:::: column
+::: codewindow
+``` r
+library(shiny)
+
+ui <- fluidPage(
+  textInput("name", "¿Cómo te llamás?"),
+  textOutput("greeting")
+)
+
+server <- function(input, output, session) {
+  output$greeting <- renderText({
+    paste0("Hola ", input$name, "!")
+  })
+}
+
+shinyApp(ui, server)
+```
+:::
+::::
+
+:::: column
+::: incremental
+-   **ui** define la interfaz de usuario.
+-   **server** define la lógica del servidor (cómo responde la app).
+-   **shinyApp(ui, server)** renderiza la app.
+:::
+::::
+:::::::
+
+## Estructura básica
+
+![](assets/cat-theme/head-07.svg){.absolute top="-50" right="300"
+width="150" height="150"}
+
+<br>
+
+![](imagenes/1.01.basic_app.png){fig-align="center" width="913"}
