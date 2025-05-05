@@ -34,6 +34,13 @@ Capítulo 8: User feedback ![](assets/cat-theme/profile-02.svg)
 :::
 ::::
 
+# {.theme-section2}
+
+::: {.r-fit-text style="transform: translateY(-15rem);"}
+¿Qué vimos en los encuentros anteriores?
+:::
+
+
 # Encuentro 1 {.theme-section3}
 
 ## Capítulos 1 y 2: Basic APP & Basic UI
@@ -94,3 +101,5 @@ width="150" height="150"}
 <br>
 
 ![](imagenes/1.01.basic_app.png){fig-align="center" width="913"}
+
+
