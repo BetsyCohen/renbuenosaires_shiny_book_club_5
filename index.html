@@ -186,6 +186,16 @@
       margin-right: 0; 
     }
   </style>
+  <link href="index_files/libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+
+  <script src="index_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+  <script src="index_files/libs/viz-1.8.2/viz.js"></script>
+
+  <link href="index_files/libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
+
+  <script src="index_files/libs/grViz-binding-1.0.11/grViz.js"></script>
+
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -271,6 +281,35 @@
 <p><img data-src="imagenes/1.01.basic_app.png" class="quarto-figure quarto-figure-center" width="913"></p>
 </figure>
 </div>
+</section>
+<section id="ui-basica" class="slide level2">
+<h2>UI basica</h2>
+<p><img data-src="assets/cat-theme/head-24.svg" class="absolute" style="top: -50px; right: 300px; "></p>
+<div class="spacer" style="height:70%;">
+<p><span class="brown-text">fluidPage()</span> organiza los componentes en una página adaptable.</p>
+<p>Vimos algunas <span class="pink-text">entradas o inputs</span> como <code>textInput()</code> (texto libre), <code>numericInput()</code> (números), <code>actionButton()</code> (botones) y <code>sliderInput()</code>.</p>
+<p>Y, <span class="pink-text">salidas (outputs)</span> como <code>textOutput()</code> que permiten la lógica reactiva desde el <code>server()</code> usando <code>render...</code> o <code>eventReactive</code> (para los botones).</p>
+</div>
+</section></section>
+<section>
+<section id="encuentro-2" class="title-slide slide level1 theme-section4 center">
+<h1>Encuentro 2</h1>
+
+</section>
+<section id="hola" class="slide level2">
+<h2>hola</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="grViz html-widget html-fill-item" id="htmlwidget-6961a29ac28a019ea349" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-6961a29ac28a019ea349">{"x":{"diagram":"\ndigraph shiny_reactivity {\n  \n  graph [layout = dot, rankdir = LR]\n\n  node [shape = box, style = filled, fillcolor = lightblue, fontsize = 12]\n\n  input   [label = \"input$...\\nValor reactivo\"]\n  render  [label = \"render*()\\nCálculo reactivo\"]\n  output  [label = \"output$...\\nMuestra resultado\"]\n\n  input -> render -> output\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="hola-1" class="slide level2">
+<h2>hola</h2>
+<p>Shiny está construido sobre un modelo de programación reactivo:</p>
+<p>“Cuando un valor de entrada cambia, los resultados relacionados se actualizan automáticamente.”</p>
+<p>Esto significa que no tenés que decirle a Shiny “cuándo” ejecutar algo: si un valor cambia y otro depende de él, se vuelve a calcular automáticamente.</p>
 
 </section></section>
     </div>
@@ -492,6 +531,82 @@
     <script type="text/javascript">
 
     </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
