@@ -164,3 +164,48 @@ nunca]{.brown-text}
 # Encuentro 3 {.theme-section5}
 
 Workflow
+
+## Control de flujo & debuggeo
+
+![](assets/cat-theme/turso-03.svg){.absolute top=150 right=100 width="450" height="450"}
+
+¿Qué puedo usar para saber [qué le pasa a mi app]{.blue-text} ? 
+
+::::: columns
+::: {.column width="50%"}
+::: codewindow
+```r
+print() cat()
+```
+:::
+
+::: codewindow
+```r
+eventReactive(input$go, {
+  browser() 
+  input$a + input$b
+})
+```
+:::
+
+::: codewindow
+```r
+# Al principio del script
+reactlog::reactlog_enable()
+# Luego de ejecutar la APP y cerrarla:
+shiny::reactlogShow()
+```
+:::
+:::
+
+::: {.column width="50%"}
+  
+:::
+:::::
+
+
+
+
+
+
+

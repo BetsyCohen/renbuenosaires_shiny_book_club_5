@@ -320,11 +320,37 @@
 <p>Si no está vinculado a una salida visible el <span class="brown-text">código puede no ejecutarse nunca</span></p>
 </div></div>
 </section></section>
+<section>
 <section id="encuentro-3" class="title-slide slide level1 theme-section5 center">
 <h1>Encuentro 3</h1>
 <p>Workflow</p>
-
 </section>
+<section id="control-de-flujo-debuggeo" class="slide level2">
+<h2>Control de flujo &amp; debuggeo</h2>
+<p><img data-src="assets/cat-theme/turso-03.svg" class="absolute" style="top: 150px; right: 100px; width: 450px; height: 450px; "></p>
+<p>¿Qué puedo usar para saber <span class="blue-text">qué le pasa a mi app</span> ?</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="codewindow">
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>() <span class="fu">cat</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="codewindow">
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">eventReactive</span>(input<span class="sc">$</span>go, {</span>
+<span id="cb3-2"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="fu">browser</span>() </span>
+<span id="cb3-3"><a href="" aria-hidden="true" tabindex="-1"></a>  input<span class="sc">$</span>a <span class="sc">+</span> input<span class="sc">$</span>b</span>
+<span id="cb3-4"><a href="" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="codewindow">
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Al principio del script</span></span>
+<span id="cb4-2"><a href="" aria-hidden="true" tabindex="-1"></a>reactlog<span class="sc">::</span><span class="fu">reactlog_enable</span>()</span>
+<span id="cb4-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Luego de ejecutar la APP y cerrarla:</span></span>
+<span id="cb4-4"><a href="" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">reactlogShow</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+
+</div></div>
+
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
