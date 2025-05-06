@@ -289,5 +289,5 @@ server <- function(input, output, session) {
 #  {.theme-section7}
 
 ::: {.r-fit-text style="transform: translateY(-15rem);"}
-[User feedback]{.purple-shadow}
+[User feedback]{.brown-shadow}
 :::
