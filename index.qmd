@@ -227,12 +227,12 @@ Layout, themes, HTML
 `tabsetPanel()`, `tabPanel()` , `navlistPanel()` ,`navbarMenu()` (diseño)
 :::
 
-## HTML, CSS & themes
+## Aplicación de estilos 
 
 ::::: columns
 ::: {.column width="50%"}
 
-Aplicación de estilos 
+**HTML**
 
 ::: codewindow
 ```r
@@ -240,8 +240,9 @@ Aplicación de estilos
 ```
 :::
 
-::: codewindow
+**CSS**
 
+::: codewindow
 
 ```r
 .pink-text {
@@ -257,7 +258,7 @@ Aplicación de estilos
 
 ::: {.column width="50%"}
 
-Usar un theme
+**THEME**
 
 ::: codewindow
 ```r
