@@ -338,10 +338,11 @@
 <div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>() <span class="fu">cat</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="codewindow">
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">eventReactive</span>(input<span class="sc">$</span>go, {</span>
-<span id="cb3-2"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="fu">browser</span>() </span>
-<span id="cb3-3"><a href="" aria-hidden="true" tabindex="-1"></a>  input<span class="sc">$</span>a <span class="sc">+</span> input<span class="sc">$</span>b</span>
-<span id="cb3-4"><a href="" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Abre una app interactiva</span></span>
+<span id="cb3-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">eventReactive</span>(input<span class="sc">$</span>go, {</span>
+<span id="cb3-3"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="fu">browser</span>() </span>
+<span id="cb3-4"><a href="" aria-hidden="true" tabindex="-1"></a>  input<span class="sc">$</span>a <span class="sc">+</span> input<span class="sc">$</span>b</span>
+<span id="cb3-5"><a href="" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="codewindow">
 <div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Al principio del script</span></span>
@@ -352,8 +353,65 @@
 </div><div class="column" style="width:50%;">
 
 </div></div>
-
 </section></section>
+<section>
+<section id="encuentro-4" class="title-slide slide level1 theme-section1 center">
+<h1>Encuentro 4</h1>
+<p>Layout, themes, HTML</p>
+</section>
+<section id="layouts-diseños-de-página" class="slide level2">
+<h2>Layouts (diseños de página)</h2>
+<p><img data-src="assets/cat-theme/turso-02.svg" class="absolute" style="top: 50px; right: 50px; width: 450px; height: 450px; "></p>
+<div class="spacer" style="height:70%;">
+<p><span class="brown-text">Página única</span></p>
+<p><code>fluidPage()</code>, <code>fixedPage()</code> ,<code>fillPag()</code> (página)</p>
+<p><code>sidebarLayout()</code> , <code>fluidRow()</code> , <code>column()</code> (diseño)</p>
+<p><span class="pink-text">Varias páginas</span></p>
+<p><code>navbarPage()</code> (página)</p>
+<p><code>tabsetPanel()</code>, <code>tabPanel()</code> , <code>navlistPanel()</code> ,<code>navbarMenu()</code> (diseño)</p>
+</div>
+</section>
+<section id="html-css-themes" class="slide level2">
+<h2>HTML, CSS &amp; themes</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Aplicación de estilos</p>
+<div class="codewindow">
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>span style<span class="ot">=</span><span class="st">"color:hotpink;"</span><span class="sc">&gt;</span>texto de prueba<span class="sc">&lt;</span><span class="er">/</span>span<span class="sc">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="codewindow">
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="" aria-hidden="true" tabindex="-1"></a>.pink<span class="sc">-</span>text {</span>
+<span id="cb6-2"><a href="" aria-hidden="true" tabindex="-1"></a>  color<span class="sc">:</span> <span class="fu">darken</span>(<span class="sc">$</span>theme<span class="sc">-</span>pink, <span class="dv">10</span>%);</span>
+<span id="cb6-3"><a href="" aria-hidden="true" tabindex="-1"></a>  font<span class="sc">-</span>weight<span class="sc">:</span> bold;</span>
+<span id="cb6-4"><a href="" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><span class="pink-text">texto de prueba</span></p>
+</div><div class="column" style="width:50%;">
+<p>Usar un theme</p>
+<div class="codewindow">
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb7-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bslib)</span>
+<span id="cb7-3"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb7-5"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="at">theme =</span> <span class="fu">bs_theme</span>(<span class="at">bootswatch =</span> <span class="st">"minty"</span>),</span>
+<span id="cb7-6"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="fu">h2</span>(<span class="st">"App con tema Minty"</span>),</span>
+<span id="cb7-7"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sliderInput</span>(<span class="st">"x"</span>, <span class="st">"Elegí un número"</span>, <span class="dv">1</span>, <span class="dv">100</span>, <span class="dv">50</span>),</span>
+<span id="cb7-8"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textOutput</span>(<span class="st">"valor"</span>)</span>
+<span id="cb7-9"><a href="" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-10"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb7-12"><a href="" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>valor <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb7-13"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(<span class="st">"Número:"</span>, input<span class="sc">$</span>x)</span>
+<span id="cb7-14"><a href="" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb7-15"><a href="" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div></div>
+</section></section>
+<section id="encuentro-5" class="title-slide slide level1 theme-section6 center">
+<h1>Encuentro 5</h1>
+<p>User feedback</p>
+
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

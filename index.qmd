@@ -181,6 +181,7 @@ print() cat()
 
 ::: codewindow
 ```r
+# Abre una app interactiva
 eventReactive(input$go, {
   browser() 
   input$a + input$b
@@ -203,9 +204,83 @@ shiny::reactlogShow()
 :::
 :::::
 
+# Encuentro 4 {.theme-section1}
+Layout, themes, HTML
+
+## Layouts (diseños de página)
+
+![](assets/cat-theme/turso-02.svg){.absolute top=50 right=50 width="450" height="450"}
 
 
+::: {.spacer style="height:70%;"}
+
+[Página única]{.brown-text}
+
+`fluidPage()`, `fixedPage()` ,`fillPag()` (página)
+
+`sidebarLayout()` , `fluidRow()` , `column()` (diseño)
+
+[Varias páginas]{.pink-text}
+
+`navbarPage()`  (página)
+
+`tabsetPanel()`, `tabPanel()` , `navlistPanel()` ,`navbarMenu()` (diseño)
+:::
+
+## HTML, CSS & themes
+
+::::: columns
+::: {.column width="50%"}
+
+Aplicación de estilos 
+
+::: codewindow
+```r
+<span style="color:hotpink;">texto de prueba</span>
+```
+:::
+
+::: codewindow
 
 
+```r
+.pink-text {
+  color: darken($theme-pink, 10%);
+  font-weight: bold;
+}
+```
 
+:::
 
+[texto de prueba]{.pink-text}
+:::
+
+::: {.column width="50%"}
+
+Usar un theme
+
+::: codewindow
+```r
+library(shiny)
+library(bslib)
+
+ui <- fluidPage(
+  theme = bs_theme(bootswatch = "minty"),
+  h2("App con tema Minty"),
+  sliderInput("x", "Elegí un número", 1, 100, 50),
+  textOutput("valor")
+)
+
+server <- function(input, output, session) {
+  output$valor <- renderText({
+    paste("Número:", input$x)
+  })
+}
+
+```
+:::
+:::
+:::::
+
+# Encuentro 5 {.theme-section6}
+User feedback
