@@ -10,7 +10,7 @@ format:
       - codewindow
 echo: false
 code-line-numbers: false
-footer: "Realizado con el <a href='https://github.com/EmilHvitfeldt/talk-socalrug-hackathon-feature-engineering' target='_blank'>template de emilhvitfeldt</a> para el <a href='https://github.com/RLadies-BA/mastering-shiny' target='_blank'>Club de lectura Mastering Shiny</a>  "
+footer: "Realizado con el <a href='https://github.com/EmilHvitfeldt/talk-socalrug-hackathon-feature-engineering' target='_blank'>template de emilhvitfeldt</a> para el <a href='https://github.com/RLadies-BA/mastering-shiny' target='_blank'>Club de lectura Mastering Shiny</a>"
 editor: 
   markdown: 
     wrap: 72
