@@ -34,14 +34,15 @@ Capítulo 8: User feedback ![](assets/cat-theme/profile-02.svg)
 :::
 ::::
 
-# {.theme-section2}
+#  {.theme-section2}
 
 ::: {.r-fit-text style="transform: translateY(-15rem);"}
 ¿Qué vimos en los encuentros anteriores?
 :::
 
-
 # Encuentro 1 {.theme-section3}
+
+Basic APP & Basic UI
 
 ## Capítulos 1 y 2: Basic APP & Basic UI
 
@@ -102,60 +103,64 @@ width="150" height="150"}
 
 ![](imagenes/1.01.basic_app.png){fig-align="center" width="913"}
 
-
-
-
-
 ## UI basica
 
 ![](assets/cat-theme/head-24.svg){.absolute top="-50" right="300"}
 
-
 ::: {.spacer style="height:70%;"}
+[fluidPage()]{.brown-text} organiza los componentes en una página
+adaptable.
 
-[fluidPage()]{.brown-text} organiza los componentes en una página adaptable.
+Vimos algunas [entradas o inputs]{.pink-text} como `textInput()` (texto
+libre), `numericInput()` (números), `actionButton()` (botones) y
+`sliderInput()`.
 
-Vimos algunas [entradas o inputs]{.pink-text} como `textInput()` (texto libre), `numericInput()` (números), `actionButton()` (botones) y `sliderInput()`. 
-
-Y, [salidas (outputs)]{.pink-text} como `textOutput()` que permiten la lógica reactiva desde el `server()` usando `render...` o `eventReactive` (para los botones).
+Y, [salidas (outputs)]{.pink-text} como `textOutput()` que permiten la
+lógica reactiva desde el `server()` usando `render...` o `eventReactive`
+(para los botones).
 :::
-
-
-
-
-
 
 # Encuentro 2 {.theme-section4}
 
+Basic reactivity
 
-## hola
+## Basic reactivity
 
-<!-- ```{r} -->
+![](assets/cat-theme/head-30.svg){.absolute top="-50" right="300"
+width="120" height="120"} ![](assets/cat-theme/head-31.svg){.absolute
+top="-50" right="120" width="150" height="120"}
 
-<!-- DiagrammeR::grViz(" -->
-<!-- digraph shiny_reactivity { -->
+![](imagenes/2.01.reactividad.png){fig-align="center" width="723"}
 
-<!--   graph [layout = dot, rankdir = LR] -->
+![](imagenes/2.02.users.png){fig-align="center" width="516"}
 
-<!--   node [shape = box, style = filled, fontname = Helvetica, fontsize = 12, width=3] -->
+## Programación declarativa
 
-<!--   // Estilos de nodos por tipo -->
-<!--   input  [label = '🟢 input$...\\n\\n🧩 Valor reactivo\\nSe actualiza cuando\\nel usuario interactúa', fillcolor = '#D1F2EB'] -->
+![](assets/cat-theme/head-07.svg){.absolute top="-50" right="300"
+width="150" height="150"} ![](assets/cat-theme/head-08.svg){.absolute
+top="-50" right="150" width="150" height="150"}
 
-<!--   render [label = '🟡 render*()\\n\\n⚙️ Cálculo reactivo\\nReacciona a cambios\\nde inputs', fillcolor = '#FCF3CF'] -->
+<br>
 
-<!--   output [label = '🔵 output$...\\n\\n🖥️ Resultado\\nMuestra lo generado\\npor render*()', fillcolor = '#D6EAF8'] -->
+Shiny usa [programación declarativa]{.pink-text}
 
-<!--   // Conexiones -->
-<!--   input -> render [label = 'cambio de input'] -->
-<!--   render -> output [label = 'render genera resultado'] -->
-<!-- } -->
-<!-- ") -->
-<!-- ``` -->
+> No le indicamos qué hacer sino qué queremos lograr.
 
-## hola
-Shiny está construido sobre un modelo de programación reactivo:
+[Son aplicaciones perezosas]{.pink-text}: solo actualizan los outputs
+visibles, y solo cuando es necesario.
 
-"Cuando un valor de entrada cambia, los resultados relacionados se actualizan automáticamente."
+::::: columns
+::: {.column width="20%"}
+![](https://cdn.pixabay.com/animation/2023/04/28/18/34/18-34-10-554_512.gif){fig-align="center"
+width="128" height="109"}
+:::
 
-Esto significa que no tenés que decirle a Shiny “cuándo” ejecutar algo: si un valor cambia y otro depende de él, se vuelve a calcular automáticamente.
+::: {.column width="80%"}
+Si no está vinculado a una salida visible el [código puede no ejecutarse
+nunca]{.brown-text}
+:::
+:::::
+
+# Encuentro 3 {.theme-section5}
+
+Workflow

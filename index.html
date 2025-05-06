@@ -186,16 +186,6 @@
       margin-right: 0; 
     }
   </style>
-  <link href="index_files/libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
-
-  <script src="index_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-
-  <script src="index_files/libs/viz-1.8.2/viz.js"></script>
-
-  <link href="index_files/libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
-
-  <script src="index_files/libs/grViz-binding-1.0.11/grViz.js"></script>
-
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -228,7 +218,7 @@
 <section>
 <section id="encuentro-1" class="title-slide slide level1 theme-section3 center">
 <h1>Encuentro 1</h1>
-
+<p>Basic APP &amp; Basic UI</p>
 </section>
 <section id="capítulos-1-y-2-basic-app-basic-ui" class="slide level2">
 <h2>Capítulos 1 y 2: Basic APP &amp; Basic UI</h2>
@@ -294,24 +284,47 @@
 <section>
 <section id="encuentro-2" class="title-slide slide level1 theme-section4 center">
 <h1>Encuentro 2</h1>
-
+<p>Basic reactivity</p>
 </section>
-<section id="hola" class="slide level2">
-<h2>hola</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-6961a29ac28a019ea349" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-6961a29ac28a019ea349">{"x":{"diagram":"\ndigraph shiny_reactivity {\n  \n  graph [layout = dot, rankdir = LR]\n\n  node [shape = box, style = filled, fillcolor = lightblue, fontsize = 12]\n\n  input   [label = \"input$...\\nValor reactivo\"]\n  render  [label = \"render*()\\nCálculo reactivo\"]\n  output  [label = \"output$...\\nMuestra resultado\"]\n\n  input -> render -> output\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<section id="basic-reactivity" class="slide level2">
+<h2>Basic reactivity</h2>
+<p><img data-src="assets/cat-theme/head-30.svg" class="absolute" style="top: -50px; right: 300px; width: 120px; height: 120px; "> <img data-src="assets/cat-theme/head-31.svg" class="absolute" style="top: -50px; right: 120px; width: 150px; height: 120px; "></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="imagenes/2.01.reactividad.png" class="quarto-figure quarto-figure-center" width="723"></p>
+</figure>
 </div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="imagenes/2.02.users.png" class="quarto-figure quarto-figure-center" width="516"></p>
+</figure>
 </div>
 </section>
-<section id="hola-1" class="slide level2">
-<h2>hola</h2>
-<p>Shiny está construido sobre un modelo de programación reactivo:</p>
-<p>“Cuando un valor de entrada cambia, los resultados relacionados se actualizan automáticamente.”</p>
-<p>Esto significa que no tenés que decirle a Shiny “cuándo” ejecutar algo: si un valor cambia y otro depende de él, se vuelve a calcular automáticamente.</p>
-
+<section id="programación-declarativa" class="slide level2">
+<h2>Programación declarativa</h2>
+<p><img data-src="assets/cat-theme/head-07.svg" class="absolute" style="top: -50px; right: 300px; width: 150px; height: 150px; "> <img data-src="assets/cat-theme/head-08.svg" class="absolute" style="top: -50px; right: 150px; width: 150px; height: 150px; "></p>
+<p><br></p>
+<p>Shiny usa <span class="pink-text">programación declarativa</span></p>
+<blockquote>
+<p>No le indicamos qué hacer sino qué queremos lograr.</p>
+</blockquote>
+<p><span class="pink-text">Son aplicaciones perezosas</span>: solo actualizan los outputs visibles, y solo cuando es necesario.</p>
+<div class="columns">
+<div class="column" style="width:20%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://cdn.pixabay.com/animation/2023/04/28/18/34/18-34-10-554_512.gif" class="quarto-figure quarto-figure-center" width="128" height="109"></p>
+</figure>
+</div>
+</div><div class="column" style="width:80%;">
+<p>Si no está vinculado a una salida visible el <span class="brown-text">código puede no ejecutarse nunca</span></p>
+</div></div>
 </section></section>
+<section id="encuentro-3" class="title-slide slide level1 theme-section5 center">
+<h1>Encuentro 3</h1>
+<p>Workflow</p>
+
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
@@ -531,82 +544,6 @@
     <script type="text/javascript">
 
     </script>
-    
-
-    <script>
-
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-
-      // slide changes (different for each slide format).
-
-      (function () {
-
-        // dispatch for htmlwidgets
-
-        function fireSlideEnter() {
-
-          const event = window.document.createEvent("Event");
-
-          event.initEvent("slideenter", true, true);
-
-          window.document.dispatchEvent(event);
-
-        }
-
-    
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-
-          fireSlideEnter();
-
-    
-
-          // dispatch for shiny
-
-          if (window.jQuery) {
-
-            if (previousSlide) {
-
-              window.jQuery(previousSlide).trigger("hidden");
-
-            }
-
-            if (currentSlide) {
-
-              window.jQuery(currentSlide).trigger("shown");
-
-            }
-
-          }
-
-        }
-
-    
-
-        // hookup for slidy
-
-        if (window.w3c_slidy) {
-
-          window.w3c_slidy.add_observer(function (slide_num) {
-
-            // slide_num starts at position 1
-
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-
-          });
-
-        }
-
-    
-
-      })();
-
-    </script>
-
-    
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

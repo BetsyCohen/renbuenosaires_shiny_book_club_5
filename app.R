@@ -1,19 +1,16 @@
 library(shiny)
 
 ui <- fluidPage(
-  textInput("nombre", "Tu nombre:"),
-  numericInput("edad", "Tu edad:", value = 30),
-  actionButton("saludar", "¡Saludar!"),
-  textOutput("saludo")
+  textInput("name", "¿Cómo te llamás?"),
+  textOutput("greeting")
 )
 
 server <- function(input, output, session) {
-  saludo <- eventReactive(input$saludar, {
-    paste("Hola", input$nombre, ", tenés", input$edad, "años.")
+  output$greeting <- renderText({
+    paste0("Hola ", input$name, "!")
   })
-  
-  output$saludo <- renderText(saludo)
 }
 
 shinyApp(ui, server)
+
 
