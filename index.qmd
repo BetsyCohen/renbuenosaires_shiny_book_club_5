@@ -283,4 +283,10 @@ server <- function(input, output, session) {
 :::::
 
 # Encuentro 5 {.theme-section6}
-User feedback
+[HOY HOY HOY HOY HOY]{.brown-text}
+
+#  {.theme-section7}
+
+::: {.r-fit-text style="transform: translateY(-15rem);"}
+[User feedback]{.purple-shadow}
+:::

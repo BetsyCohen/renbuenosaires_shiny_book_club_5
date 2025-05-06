@@ -292,3 +292,23 @@ $presentation-font-size-root: 40px;
     width: 60%;
   }
 }
+
+// Creado por ARI 
+.theme-section7 {
+  &:is(.slide-background) {
+    background-image: url('../../../../../assets/cat-theme/section-07.svg');
+    background-size: auto 70%, cover;
+    background-position: 50% 80%, center;
+    background-repeat: no-repeat;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  p,
+  pre {
+    text-align: center;
+  }
+}
