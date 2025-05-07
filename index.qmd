@@ -699,10 +699,82 @@ shinyApp(ui, server)
 
 
 ## Notificación de actalización progresiva
+Para  simular una notificación progresiva en lugar de mostrar notificaciones distintas (una debajo de la otra como si fuera un sanguchito) podemos jugar con el parámetro **id** de `showNotification()` de forma que va a parecer como si  fuera actualizando el texto de la misma notificación.
 
-Pensar ejemplo para este
+El parámetro id sirve para ir concatenando esta simulación
 
-## Barras de progreso 
+::: columns
+::: column
+::: codewindow
+```r
+library(shiny)
+
+ui <- fluidPage(
+  actionButton("start", "Iniciar carga de datos"),
+  tableOutput("data")
+)
+
+server <- function(input, output, session) {
+  notify <- function(msg, id = NULL) {
+    showNotification(msg, id = id, duration = NULL, closeButton = FALSE)
+  }
+  
+  data <- eventReactive(input$start, { 
+    id <- notify("Leyendo datos...")
+    on.exit(removeNotification(id), add = TRUE)
+    Sys.sleep(1)
+    
+    notify("Reticulando splines...", id = id)
+    Sys.sleep(1)
+    
+    notify("Agrupando llamas...", id = id)
+    Sys.sleep(1)
+    
+    notify("Ortogonalizando matrices...", id = id)
+    Sys.sleep(1)
+    
+    mtcars  # dataset incorporado en R
+  })
+  
+  output$data <- renderTable(head(data()))
+}
+
+shinyApp(ui, server)
+
+```
+:::
+:::
+::: column
+![](imagenes/5.06.Notificacion_progresiva.gif)
+:::
+:::
+
+## Barras de progreso {.smaller}
+
+La sensación de paso del tiempo es muy importante desde el punto de vista del UX. Lo que estamos buscando con este tipo de elementos es:
+
+::: fragment
+::: {.speech .pink}
+![](assets/cat-theme/profile-01.svg) Proveer distracción: con imágenes, textos (con un dato curioso por ej.), sonidos.
+:::
+:::
+
+::: fragment
+::: {.speech .purple}
+![](assets/cat-theme/profile-02.svg) Dar una explicación de por qué estas esperando  
+:::
+:::
+
+::: fragment
+::: {.speech .blue}
+![](assets/cat-theme/profile-03.svg) Dar certeza respecto de cuánto tiempo llevará.
+:::
+:::
+
+
+## Barras de progreso
+
+::: {.spacer style="height:70%;"}
 
 En el libro vemos dos soluciones a las barras de progreso una nativa de shiny y otra con el paquete `waiter{}`
 
@@ -710,12 +782,16 @@ Adicionalmente existe la librería progress
 
 Para ambos casos hay que dividir la tarea principal en un número determinado de partes pequeñas que tomen aproximadamente el mismo tiempo. 
 
-## Barras de progreso con shiny
+:::
 
-Para crear una barra de progreso con Shiny, necesitas usar withProgress()y incProgress()
+## Barras de progreso con shiny {.smaller}
 
-El primer argumento de incProgress()es la cantidad que se incrementará en la barra de progreso. Por defecto, la barra de progreso empieza en 0 y termina en 1, por lo que el incremento en 1 dividido por el número de pasos garantizará que la barra de progreso esté completa al final del bucle.
+Para crear una barra de progreso con Shiny, necesitas usar withProgress() y incProgress()
 
+El primer argumento de incProgress() es la cantidad que se incrementará en la barra de progreso. Por defecto, la barra de progreso empieza en 0 y termina en 1, por lo que el incremento en 1 dividido por el número de pasos garantizará que la barra de progreso esté completa al final del bucle.
+
+::: columns
+::: column
 ::: codewindow
 ```r
 ui <- fluidPage(
@@ -739,12 +815,266 @@ server <- function(input, output, session) {
 }
 ```
 :::
+:::
+::: column
+![](imagenes/5.07.Barra_con_shiny.gif)
+:::
+:::
 
-## Barras de progreso con waiter
-
-
-## Spinners o circulito
-
+::: notes
+El primer argumento de incProgress()es la cantidad que se incrementará en la barra de progreso. Por defecto, la barra de progreso empieza en 0 y termina en 1, por lo que el incremento en 1 dividido por el número de pasos garantizará que la barra de progreso esté completa al final del bucle.
+:::
 
 
 
+## El paquete waiter
+
+El paquete waiter tambien nos permite mostrar barras de progreso con waitress y hostess 
+La acción se define en 4 pasos
+
+::: incremental
+
+-   Poner useWaiter en cualquier parte de tu UI.
+
+-   Crear el waiter
+
+-   Mostrar el waiter
+
+-   Ocultar el waiter
+
+:::
+
+## Spinners con `waiter` {.smaller}
+
+**waiter()** es ideal para hacer spinners permite hacer una barra un poco más chulas a nivel visual y por ejemplo editar en más detalle el html o agregar un gif (por ej si queres animar el logo institucional)
+
+Por ej acá usamos un spin_flower() para que muestre una flor mientras carga el gráfico
+
+::: columns
+::: column
+::: codewindow
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+  use_waiter(),  # Necesario para que waiter funcione
+  autoWaiter(
+    color = "white",
+    html = tagList(
+      spin_flowers(),
+      br(), br(),
+      tagAppendAttributes(
+        style = "color:black",
+        p("Cargando tus gráficos")
+      )
+    )
+  ),
+  actionButton("trigger", "Render"),
+  plotOutput("plot"),
+  plotOutput("plot2")
+)
+
+server <- function(input, output) {
+  
+  observeEvent(input$trigger, {
+    
+    output$plot <- renderPlot({
+      Sys.sleep(3)
+      plot(cars)
+    })
+    
+    output$plot2 <- renderPlot({
+      Sys.sleep(5)
+      plot(runif(100))
+    })
+    
+  })
+  
+}
+
+shinyApp(ui, server)
+
+```
+:::
+:::
+::: column
+![](imagenes/5.08.Spiner_con_waiter.gif)
+:::
+:::
+
+## Barras con waitress {.smaller}
+
+Por deafult waiter muestra un spinner (y podemos elegir entre más de 100 modelos!) pero también podemos hacer barras usando la funcion waitress.Para usarlo llamamops a  `useWaitress()` en el UI y definimos el waitress con `Waitress$new`.
+Dentro de `Waitress$new` nos permite setear a que elemento le vamos a aplicar la barra (`selector`), así como un `theme` `max` y `min` de la barra.
+
+::: columns
+
+::: column
+::: codewindow
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- navbarPage("Waitress aplicado al nav",
+                 tabPanel("home",
+                          useWaitress(color = "#7F7FFF"),
+                          actionButton("go", "Generar gráfico"),
+                          plotOutput("plot")
+                 )
+)
+
+server <- function(input, output, session) {
+  
+  waitress <- Waitress$new( # Creamos el objeto waitress una sola vez 
+    selector = "nav", 
+    theme = "overlay-percent", 
+    min = 0, 
+    max = 10
+  )
+  
+  observeEvent(input$go, {
+    
+    waitress$start()  # Muestra el loader
+    
+    output$plot <- renderPlot({
+      for (i in 1:10) {
+        waitress$inc(1)  # Incrementa 10%
+        Sys.sleep(0.5)
+      }
+      waitress$close()  # Oculta el loader cuando termina
+      hist(runif(100))
+    })
+    
+  })
+}
+
+shinyApp(ui, server)
+```
+
+:::
+:::
+
+::: column
+![](imagenes/5.08.Barra_con_waittress.gif)
+:::
+
+:::
+
+## Spinners con `shinycssloaders` {.smaller}
+
+Otra forma muy práctica de hacer spinners es con el paquete `shinycssloaders`
+Simplemente agregamos shinycssloaders::withSpinner() para envolver el output que queremos que *"spinee"* automaticamente y asereje!
+
+::: columns
+
+::: column
+
+::: codewindow
+```r
+library(shinycssloaders)
+
+ui <- fluidPage(
+  actionButton("go", "go"),
+  withSpinner(plotOutput("plot")),
+)
+server <- function(input, output, session) {
+  data <- eventReactive(input$go, {
+    Sys.sleep(3)
+    data.frame(x = runif(50), y = runif(50))
+  })
+  
+  output$plot <- renderPlot(plot(data()), res = 96)
+}
+```
+:::
+
+:::
+
+::: column
+![](imagenes/5.09.Spiner_con_shinycssloaders.gif)
+:::
+
+:::
+
+## Dudo luego alt+cntrl+supr: confirmación y arrepentiemintos {.smaller}
+
+
+::: fragment
+::: {.speech .pink}
+![](assets/cat-theme/profile-01.svg) Pedir la confirmación explicita
+:::
+:::
+
+::: fragment
+::: {.speech .purple}
+![](assets/cat-theme/profile-02.svg) Botón deshacer
+:::
+:::
+
+::: fragment
+::: {.speech .blue}
+![](assets/cat-theme/profile-03.svg) Cesto de reciclaje
+:::
+:::
+
+::: notes
+A veces, una acción es potencialmente peligrosa, y conviene asegurarse de que el usuario realmente quiera realizarla o darle la posibilidad de desistir antes de que sea demasiado tarde. En este capitulo se muestran tres técnicas de  básicas.
+:::
+
+
+## Confirmación explicita {.smaller}
+
+Con la función `modalDialog()` es como una especie de *aduana* en la que creamos un nuevo modo de interacción: no se puede interactuar con la app principal hasta que no se haya procesado el diálogo. Lo definimos **fuera del server** y después lo usamos de manera dinámica como eventos condicionales **dentro** del mismo
+
+::: columns
+::: column
+::: codewindow
+```r
+modal_confirm <- modalDialog(
+  "Are you sure you want to continue?",
+  title = "Deleting files",
+  footer = tagList(
+    actionButton("cancel", "Cancel"),
+    actionButton("ok", "Delete", class = "btn btn-danger")
+  )
+)
+
+
+ui <- fluidPage(
+  actionButton("delete", "Delete all files?")
+)
+
+
+server <- function(input, output, session) {
+  observeEvent(input$delete, {
+    ## en vez de desatar el evento borrar corre el dialogo
+    showModal(modal_confirm)
+  })
+  
+  observeEvent(input$ok, {
+    showNotification("Files deleted")
+    removeModal()
+  })
+  observeEvent(input$cancel, {
+    removeModal()
+  })
+}
+
+shinyApp(ui, server)
+```
+:::
+:::
+
+::: column
+![](https://mastering-shiny.org/demos/action-feedback/dialog.png)
+:::
+:::
+
+## Botón de arrepentimiento
+
+::: notes
+
+Esto no lo entendí muy bien vos?
+:::
