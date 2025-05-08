@@ -1136,23 +1136,87 @@
 <p><img data-src="https://mastering-shiny.org/demos/action-feedback/dialog.png"></p>
 </div></div>
 </section>
-<section id="botón-de-arrepentimiento" class="slide level2">
+<section id="botón-de-arrepentimiento" class="slide level2 smaller">
 <h2>Botón de arrepentimiento</h2>
-<aside class="notes">
-<p>Esto no lo entendí muy bien vos?</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<p><img data-src="assets/cat-theme/turso-03.svg" class="absolute" style="top: 100px; right: 100px; width: 450px; height: 450px; "></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="spacer" style="height:50%;">
+<p>A veces <span class="purple-text">confirmar acciones con un <em>“¿estás seguro?”</em></span> no sirve</p>
+<p>Porque los usuarios se acostumbran a clickear <span class="blue-text">Sí</span></p>
+<p>Esta opción permite <span class="pink-text">deshacer</span> luego de ejecutar la acción (como pasa con los mails).</p>
+<p>Para eso se puede utilizar <code>observeEvent()</code>, se puede llamar a <code>runLater()</code> esperar X segundos y recién realizar la acción o eliminarla.</p>
+</div>
+</div><div class="column" style="width:50%;">
 
+</div></div>
+</section>
+<section id="ejemplo-de-botón-de-arrepentimiento" class="slide level2">
+<h2><span class="pink-text">Ejemplo</span> de botón de arrepentimiento</h2>
+<div class="columns">
+<div class="column">
+<div class="codewindow">
+<div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb22-2"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textAreaInput</span>(<span class="st">"message"</span>, </span>
+<span id="cb22-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="cn">NULL</span>, </span>
+<span id="cb22-4"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="at">placeholder =</span> <span class="st">"What's happening?"</span>,</span>
+<span id="cb22-5"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="at">rows =</span> <span class="dv">3</span></span>
+<span id="cb22-6"><a href="" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb22-7"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="fu">actionButton</span>(<span class="st">"tweet"</span>, <span class="st">"Tweet"</span>)</span>
+<span id="cb22-8"><a href="" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-9"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="" aria-hidden="true" tabindex="-1"></a>runLater <span class="ot">&lt;-</span> <span class="cf">function</span>(action, <span class="at">seconds =</span> <span class="dv">3</span>) {</span>
+<span id="cb22-11"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="fu">observeEvent</span>(</span>
+<span id="cb22-12"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="fu">invalidateLater</span>(seconds <span class="sc">*</span> <span class="dv">1000</span>), action, </span>
+<span id="cb22-13"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="at">ignoreInit =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb22-14"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="at">once =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb22-15"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="at">ignoreNULL =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb22-16"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="at">autoDestroy =</span> <span class="cn">FALSE</span></span>
+<span id="cb22-17"><a href="" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb22-18"><a href="" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-19"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-20"><a href="" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb22-21"><a href="" aria-hidden="true" tabindex="-1"></a>  waiting <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb22-22"><a href="" aria-hidden="true" tabindex="-1"></a>  last_message <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb22-23"><a href="" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-24"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>tweet, {</span>
+<span id="cb22-25"><a href="" aria-hidden="true" tabindex="-1"></a>    notification <span class="ot">&lt;-</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"Tweeted '{input$message}'"</span>)</span>
+<span id="cb22-26"><a href="" aria-hidden="true" tabindex="-1"></a>    last_message <span class="ot">&lt;&lt;-</span> input<span class="sc">$</span>message</span>
+<span id="cb22-27"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="fu">updateTextAreaInput</span>(session, <span class="st">"message"</span>, <span class="at">value =</span> <span class="st">""</span>)</span>
+<span id="cb22-28"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-29"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="fu">showNotification</span>(</span>
+<span id="cb22-30"><a href="" aria-hidden="true" tabindex="-1"></a>      notification,</span>
+<span id="cb22-31"><a href="" aria-hidden="true" tabindex="-1"></a>      <span class="at">action =</span> <span class="fu">actionButton</span>(<span class="st">"undo"</span>, <span class="st">"Undo?"</span>),</span>
+<span id="cb22-32"><a href="" aria-hidden="true" tabindex="-1"></a>      <span class="at">duration =</span> <span class="cn">NULL</span>,</span>
+<span id="cb22-33"><a href="" aria-hidden="true" tabindex="-1"></a>      <span class="at">closeButton =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb22-34"><a href="" aria-hidden="true" tabindex="-1"></a>      <span class="at">id =</span> <span class="st">"tweeted"</span>,</span>
+<span id="cb22-35"><a href="" aria-hidden="true" tabindex="-1"></a>      <span class="at">type =</span> <span class="st">"warning"</span></span>
+<span id="cb22-36"><a href="" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb22-37"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-38"><a href="" aria-hidden="true" tabindex="-1"></a>    waiting <span class="ot">&lt;&lt;-</span> <span class="fu">runLater</span>({</span>
+<span id="cb22-39"><a href="" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cat</span>(<span class="st">"Actually sending tweet...</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb22-40"><a href="" aria-hidden="true" tabindex="-1"></a>      <span class="fu">removeNotification</span>(<span class="st">"tweeted"</span>)</span>
+<span id="cb22-41"><a href="" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb22-42"><a href="" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb22-43"><a href="" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-44"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>undo, {</span>
+<span id="cb22-45"><a href="" aria-hidden="true" tabindex="-1"></a>    waiting<span class="sc">$</span><span class="fu">destroy</span>()</span>
+<span id="cb22-46"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="fu">showNotification</span>(<span class="st">"Tweet retracted"</span>, <span class="at">id =</span> <span class="st">"tweeted"</span>)</span>
+<span id="cb22-47"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="fu">updateTextAreaInput</span>(session, <span class="st">"message"</span>, <span class="at">value =</span> last_message)</span>
+<span id="cb22-48"><a href="" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb22-49"><a href="" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column">
+<p><img data-src="imagenes/5.10.boton_arrepentimiento.gif" width="563"></p>
+</div></div>
 </section></section>
+<section id="section-2" class="title-slide slide level1 theme-section2 center">
+<h1></h1>
+<div class="r-fit-text" style="transform: translateY(-15rem);">
+<p>Muchas gracias</p>
+</div>
+
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

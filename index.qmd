@@ -1104,16 +1104,18 @@ tres técnicas de básicas.
 
 ## Confirmación explicita {.smaller}
 
-![](assets/cat-theme/head-21.svg){.absolute bottom=50 right=50 width="150" height="150"}
-![](assets/cat-theme/head-21.svg){.absolute bottom=50 right=180 width="150" height="150"}
-![](assets/cat-theme/head-21.svg){.absolute bottom=50 right=310 width="150" height="150"}
-![](assets/cat-theme/head-21.svg){.absolute bottom=50 right=440 width="150" height="150"}
+![](assets/cat-theme/head-21.svg){.absolute bottom="50" right="50"
+width="150" height="150"} ![](assets/cat-theme/head-21.svg){.absolute
+bottom="50" right="180" width="150" height="150"}
+![](assets/cat-theme/head-21.svg){.absolute bottom="50" right="310"
+width="150" height="150"} ![](assets/cat-theme/head-21.svg){.absolute
+bottom="50" right="440" width="150" height="150"}
 
 Con la función `modalDialog()` es como una especie de *aduana* en la que
-creamos un nuevo modo de interacción: [no se puede interactuar con la app
-principal hasta que no se haya procesado el diálogo]{.purple-text}. Lo definimos
-**fuera del server** y después lo usamos de manera dinámica como *eventos
-condicionales* **dentro** del mismo
+creamos un nuevo modo de interacción: [no se puede interactuar con la
+app principal hasta que no se haya procesado el diálogo]{.purple-text}.
+Lo definimos **fuera del server** y después lo usamos de manera dinámica
+como *eventos condicionales* **dentro** del mismo
 
 :::::: columns
 :::: column
@@ -1159,8 +1161,93 @@ shinyApp(ui, server)
 :::
 ::::::
 
-## Botón de arrepentimiento
+## Botón de arrepentimiento {.smaller}
 
-::: notes
-Esto no lo entendí muy bien vos?
+![](assets/cat-theme/turso-03.svg){.absolute top=100 right=100 width="450" height="450"}
+
+
+:::::: columns
+::::  {.column width="50%"}
+::: {.spacer style="height:50%;"}
+A veces [confirmar acciones con un *“¿estás seguro?”*]{.purple-text} no sirve
+
+Porque los usuarios se acostumbran a clickear [Sí]{.blue-text}
+
+Esta opción permite [deshacer]{.pink-text} luego de ejecutar la acción (como pasa con los mails). 
+
+Para eso se puede utilizar `observeEvent()`, se puede llamar a `runLater()` esperar X segundos y recién realizar la acción o eliminarla.
+:::
+::::
+:::: {.column width="50%"}
+::::
+:::::: 
+
+## [Ejemplo]{.pink-text} de botón de arrepentimiento 
+
+:::::: columns
+:::: column
+::: codewindow
+``` r
+ui <- fluidPage(
+  textAreaInput("message", 
+    label = NULL, 
+    placeholder = "What's happening?",
+    rows = 3
+  ),
+  actionButton("tweet", "Tweet")
+)
+
+runLater <- function(action, seconds = 3) {
+  observeEvent(
+    invalidateLater(seconds * 1000), action, 
+    ignoreInit = TRUE, 
+    once = TRUE, 
+    ignoreNULL = FALSE,
+    autoDestroy = FALSE
+  )
+}
+
+server <- function(input, output, session) {
+  waiting <- NULL
+  last_message <- NULL
+  
+  observeEvent(input$tweet, {
+    notification <- glue::glue("Tweeted '{input$message}'")
+    last_message <<- input$message
+    updateTextAreaInput(session, "message", value = "")
+
+    showNotification(
+      notification,
+      action = actionButton("undo", "Undo?"),
+      duration = NULL,
+      closeButton = FALSE,
+      id = "tweeted",
+      type = "warning"
+    )
+
+    waiting <<- runLater({
+      cat("Actually sending tweet...\n")
+      removeNotification("tweeted")
+    })
+  })
+  
+  observeEvent(input$undo, {
+    waiting$destroy()
+    showNotification("Tweet retracted", id = "tweeted")
+    updateTextAreaInput(session, "message", value = last_message)
+  })
+}
+```
+:::
+::::
+
+::: column
+![](imagenes/5.10.boton_arrepentimiento.gif){width="563"}
+:::
+::::::
+
+#  {.theme-section2}
+
+::: {.r-fit-text style="transform: translateY(-15rem);"}
+Muchas gracias
 :::
