@@ -538,7 +538,7 @@ server <- function(input, output, session) {
 ::::::
 
 ::: callout-note
-### req() como declaración lógica per se
+### req() como condición especial
 
 Se puede usar `req()` con su propia declaración lógica. Por ejemplo:
 **req(input\$a \> 0)** permitirá que el cálculo continúe cuando sea
