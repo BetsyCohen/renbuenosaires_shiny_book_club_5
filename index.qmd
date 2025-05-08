@@ -28,11 +28,11 @@ Betsy Cohen & Ariana Bardauil
 ![](assets/cat-theme/profile-01.svg) Recapitular encuentros anteriores
 :::
 
-::: fragment
+:::: fragment
 ::: {.speech .purple .right}
 Capítulo 8: User feedback ![](assets/cat-theme/profile-02.svg)
 :::
-:::
+::::
 
 #  {.theme-section2}
 
@@ -46,7 +46,7 @@ Basic APP & Basic UI
 
 ## Capítulos 1 y 2: Basic APP & Basic UI
 
-::: fragment
+:::: fragment
 ::: r-fit-text
 Construimos nuestra
 
@@ -54,7 +54,7 @@ Construimos nuestra
 
 en [shiny]{.blue-shadow}
 :::
-:::
+::::
 
 ## Estructura básica
 
@@ -63,8 +63,8 @@ en [shiny]{.blue-shadow}
 ![](assets/cat-theme/head-01.svg){.absolute bottom="0" right="0"
 width="150" height="150"}
 
-::: columns
-::: column
+::::::: columns
+:::: column
 ::: codewindow
 ``` r
 library(shiny)
@@ -83,16 +83,16 @@ server <- function(input, output, session) {
 shinyApp(ui, server)
 ```
 :::
-:::
+::::
 
-::: column
+:::: column
 ::: incremental
 -   **ui** define la interfaz de usuario.
 -   **server** define la lógica del servidor (cómo responde la app).
 -   **shinyApp(ui, server)** renderiza la app.
 :::
-:::
-:::
+::::
+:::::::
 
 ## Estructura básica
 
@@ -156,7 +156,7 @@ Shiny usa [programación declarativa]{.pink-text}
 [Son aplicaciones perezosas]{.pink-text}: solo actualizan los outputs
 visibles, y solo cuando es necesario.
 
-::: columns
+::::: columns
 ::: {.column width="20%"}
 ![](https://cdn.pixabay.com/animation/2023/04/28/18/34/18-34-10-554_512.gif){fig-align="center"
 width="128" height="109"}
@@ -166,7 +166,7 @@ width="128" height="109"}
 Si no está vinculado a una salida visible el [código puede no ejecutarse
 nunca]{.brown-text}
 :::
-:::
+:::::
 
 # Encuentro 3 {.theme-section5}
 
@@ -179,8 +179,8 @@ width="450" height="450"}
 
 ¿Qué puedo usar para saber [qué le pasa a mi app]{.blue-text} ?
 
-::: columns
-::: {.column width="50%"}
+:::::::: columns
+:::::: {.column width="50%"}
 ::: codewindow
 ``` r
 print() cat()
@@ -205,11 +205,11 @@ reactlog::reactlog_enable()
 shiny::reactlogShow()
 ```
 :::
-:::
+::::::
 
 ::: {.column width="50%"}
 :::
-:::
+::::::::
 
 # Encuentro 4 {.theme-section1}
 
@@ -237,8 +237,8 @@ width="450" height="450"}
 
 ## Aplicación de estilos
 
-::: columns
-::: {.column width="50%"}
+:::::::: columns
+::::: {.column width="50%"}
 **HTML**
 
 ::: codewindow
@@ -259,9 +259,9 @@ width="450" height="450"}
 :::
 
 [texto de prueba]{.pink-text}
-:::
+:::::
 
-::: {.column width="50%"}
+:::: {.column width="50%"}
 **THEME**
 
 ::: codewindow
@@ -283,8 +283,8 @@ server <- function(input, output, session) {
 }
 ```
 :::
-:::
-:::
+::::
+::::::::
 
 # Encuentro 5 {.theme-section6}
 
@@ -298,14 +298,21 @@ server <- function(input, output, session) {
 
 ## El UX no son los padres
 
-::: {.spacer style="height:70%;"}
-Experiencia de usuario
+![](assets/cat-theme/head-14.svg){.absolute top="400" left="300"
+width="150" height="150"} ![](assets/cat-theme/head-15.svg){.absolute
+top="400" left="50" width="150" height="150"}
+![](assets/cat-theme/head-16.svg){.absolute top="200" left="300"
+width="150" height="150"} ![](assets/cat-theme/head-17.svg){.absolute
+top="200" left="50" width="150" height="150"}
 
-Interactuar de manera visual a diferentes situaciones
+::: {.spacer style="height:70%; text-align: right;"}
+Experiencia de [usuario]{.purple-text}
 
-Pedagogía refuerzo con estímulo visual para aprendizaje
+[Interactuar]{.blue-text} de manera [visual]{.pink-text}
+
+Pedagogía refuerzo con [estímulo visual]{.brown-text}
 :::
-  
+
 ::: notes
 Un concepto central en nuestra app es la **experiencia de usabilidad** o
 UX
@@ -321,25 +328,32 @@ refuerzan este estímulo
 
 ## Tipos de feedback
 
-El capítulo se recorren 4 posibles formas de feedback usando el ayudín de
-`shinyFeedback` y `waiter`.
+![](assets/cat-theme/head-12.svg){.absolute bottom="0" left="0"
+width="150" height="150"}
 
-:::: columns
-::: {.column width="70%"}
--   🛑️ Validación 
--   ⚠  Notificación 
--   ⌛ Barras de progreso 
--   👌 Diálogos de confirmación 
--   🔙 Botones de deshacer 
+El capítulo se recorren 4 posibles formas de feedback usando el ayudín
+de `shinyFeedback` y `waiter`.
+
+:::::: columns
+:::: {.column width="70%"}
+::: incremental
+-   🛑️ Validación
+-   ⚠ Notificación
+-   ⌛ Barras de progreso
+-   👌 Diálogos de confirmación
+-   🔙 Botones de deshacer
 :::
+::::
 
 ::: {.column width="30%"}
 ![](imagenes/shinyfeedback_waiter_hexs.png)
 :::
-::::
-
+::::::
 
 ## Validar una entrada {.smaller}
+
+![](assets/cat-theme/head-10.svg){.absolute bottom="0" right="0"
+width="150" height="150"}
 
 ::: notes
 Pensar en cómo el usuario podría usar mal tu aplicación te permite
@@ -351,9 +365,8 @@ Un primer paso es validar el tipo de entrada cosa que podemos hacer con
 el paquete shinyFeedback
 :::
 
-::: columns
+:::::: columns
 ::: column
-
 ```{r}
 #| code-line-numbers: "4,12-15"
 #| eval: false
@@ -383,27 +396,28 @@ server <- function(input, output, session) {
 shinyApp(ui, server)
 
 ```
-
 :::
 
-
-::: column
-::: incremental 
-
+:::: column
+::: incremental
 -   Agregamos `useShinyFeedback()` en el ui.
 -   En el usamos alguna de las funciones de retroalimentación
     `feedback()`, `feedbackWarning()`, `feedbackDanger()`y
     `feedbackSuccess()`
--   Todas tienen tres argumentos obligatorios (inputId, show, text) y de
-    manera optativa podemos poner: color y icon
+-   Todas tienen \[tres argumentos obligatorios\].{blue-text}
+    (**inputId**, **show**, **text**) y de manera optativa podemos
+    poner: \[color\].{purple-text} y \[icon\].{purple-text}
 :::
-:::
-:::
+::::
+::::::
 
 ## Validar una entrada
 
-::: columns
-::: column
+![](assets/cat-theme/turso-01.svg){.absolute top="280" right="100"
+width="300" height="300"}
+
+:::::: columns
+:::: column
 ::: codewindow
 ``` r
 library(shiny)
@@ -427,22 +441,26 @@ server <- function(input, output, session) {
 shinyApp(ui, server)
 ```
 :::
-:::
+::::
 
 ::: column
 ![](imagenes/5.01.shinyfeedback_sin_rec.png)
 :::
-:::
+::::::
 
 ## Pausar la ejecución bajo requisitos {.smaller}
 
-A veces necesitamos una forma de pausar la ejecución para que no ocurra nada hasta que se cumplan ciertas condiciones en nuestro `reactive{}`.
-La función `req()` nos permite agregar requisitos para la ejecucción dentro del server
-Por ej. en este caso podemos poner como requisito que no muestre el resultado erróneo
+![](assets/cat-theme/turso-04.svg){.absolute top="330" right="100"
+width="300" height="300"}
 
-::: columns
+¿Cómo **pausamos la ejecución** para que no ocurra nada hasta que se
+cumplan ciertas condiciones en nuestro `reactive{}`? [La función `req()`
+nos permite agregar requisitos para la ejecucción dentro del
+server]{.fragment .highlight-purple fragment-index="1"}. Por ej. podemos
+poner como requisito que *no muestre el resultado erróneo*
+
+::::: columns
 ::: column
-
 ```{r}
 #| code-line-numbers: "16"
 #| eval: false
@@ -478,19 +496,23 @@ shinyApp(ui, server)
 ::: column
 ![](imagenes/5.02.shinyfeedback_con_rec.png)
 :::
-:::
-
-
-
-
+:::::
 
 ## Pausar la ejecución bajo requisitos {.smaller}
-Y a veces tenemos más de una condición o requisito que queremos freezar y conviene esperar a que el usuario termnine de hacer algo. Por ej. en este caso necesitamos que termine de elegir el idioma (`selectInput()`) y ponga su nombre (`textInput()`) como requisito para que se ejecute el **greetings** en el `paste0()`
 
-:::: columns
-::: column
+![](assets/cat-theme/head-21.svg){.absolute bottom="150" right="250"
+width="150" height="150"}
+
+A veces tenemos más de una condición que queremos *freezar* y hay que
+esperar a que el usuario termine de hacer algo. Por ej. en este caso
+necesitamos que termine de elegir el idioma (`selectInput()`) y ponga su
+nombre (`textInput()`) para que se ejecute el **greetings** en el
+`paste0()`
+
+:::::: columns
+:::: column
 ::: codewindow
-```r
+``` r
 ui <- fluidPage(
   selectInput("language", "Language", choices = c("", "English", "Maori")),
   textInput("name", "Name"),
@@ -509,25 +531,30 @@ server <- function(input, output, session) {
 }
 ```
 :::
-:::
+::::
 
 ::: column
 ![](imagenes/5.03.rec_multiple.png)
 :::
-::::
+::::::
 
 ::: callout-note
 ### req() como declaración lógica per se
-También se puede usar `req()` con su propia declaración lógica si es necesario. Por ejemplo, req(input$a > 0)permitirá que el cálculo continúe cuando asea mayor que 0.
+
+Se puede usar `req()` con su propia declaración lógica. Por ejemplo:
+**req(input\$a \> 0)** permitirá que el cálculo continúe cuando sea
+mayor que 0.
 :::
 
-## Cobinando req() y shinyFeedback {.smaller}
+## Combinando `req()` y `shinyFeedback` {.smaller}
 
-Y también podemos combinar ambas cosas como en este caso (que retoma el ejemplo de app del capitulo 1 se seleccion de dataset segun el nombre) queremos continuar con el cálculo si el usuario ha ingresado un valor, por lo que lo hacemos req(), chequeamos si el nombre existe y sino no existe tira un warning avisando.
+Además, podemos combinar **ambas cosas**. En este caso, queremos
+continuar con el cálculo si el usuario ha ingresado un valor, por lo que
+con `req()` chequeamos si el nombre existe y en caso de que **NO** envía
+un **warning** avisando.
 
-:::: columns
-
-::: column
+:::::: columns
+:::: column
 ::: codewindow
 ``` r
 server <- function(input, output, session) {
@@ -547,23 +574,29 @@ server <- function(input, output, session) {
 }
 ```
 :::
-:::
+::::
 
 ::: column
 ![](imagenes/5.04.validacion_junto_con_rec.png)
 :::
+::::::
 
-::::
+~(\*)\ Ejemplo\ retomado\ del\ capítulo\ 1~
 
-## Validar multiples entradas y salidas con validate() {.smaller}
+## Validar multiples entradas y salidas con `validate()` {.smaller}
 
-La función integrada de shiny `validate()` nos va a permitir controlar múltiples entradas **y** tirar el mensaje.
+![](assets/cat-theme/head-02.svg){.absolute bottom=50 right=370 width="150" height="150"}
+![](assets/cat-theme/head-03.svg){.absolute bottom=50 right=220 width="150" height="150"}
+![](assets/cat-theme/head-04.svg){.absolute bottom=50 right=70 width="150" height="150"}
 
-El siguiente código muestra un ejemplo sencillo donde no queremos registrar ni calcular la raíz cuadrada de valores negativos en x. 
+La función integrada de shiny `validate()` nos va a permitir [controlar
+múltiples entradas]{.pink-text} **y** tirar el [mensaje]{.blue-text}.
 
-::: columns
+El siguiente código muestra un ejemplo sencillo donde [no queremos]{.brown-text}
+registrar ni calcular la raíz cuadrada de valores negativos en x.
 
-::: column
+:::::: columns
+:::: column
 ::: codewindow
 ``` r
 ui <- fluidPage(
@@ -589,47 +622,51 @@ server <- function(input, output, session) {
 }
 ```
 :::
-:::
+::::
 
 ::: column
 ![](imagenes/5.05.validacion_con_validate.png)
 :::
-
-:::
-
+::::::
 
 ## Cual sería la diferencia entre `validate()` y `req()` {.smaller}
 
-| Función      | ¿Qué hace?                                                                    | ¿Dónde se usa?                     | ¿Qué muestra si falla?                |
-| ------------ | ----------------------------------------------------------------------------- | ---------------------------------- | ------------------------------------- |
-| `req()`      | Verifica que un valor exista o cumpla una condición mínima                    | Cualquier parte del servidor       | **Nada** (el output queda en blanco)  |
+| Función | ¿Qué hace? | ¿Dónde se usa? | ¿Qué muestra si falla? |
+|-----------------|-----------------------|-----------------|-----------------|
+| `req()` | Verifica que un valor exista o cumpla una condición mínima | Cualquier parte del servidor | **Nada** (el output queda en blanco) |
 | `validate()` | Verifica una condición lógica y **muestra un mensaje de error personalizado** | Solo dentro de `render*()` outputs | El **mensaje de error** que le pongas |
-
 
 ## Notificaciones
 
-Las notificaciones las vamos a ir viendo apiladas en la parte inferior derecha de la app.
+Las notificaciones las vamos a ir viendo apiladas en la parte inferior
+derecha de la app.
 
 Tipos de notificación:
 
--   **transitoria**: desaparece automáticamente después de un período de tiempo fijo.
--   **del proceso**: cuando se inicia un proceso y eliminarla cuando el proceso finaliza.
--   **progresivas**: actualizar una sola notificación con actualizaciones progresivas
+-   **transitoria**: desaparece automáticamente después de un período de
+    tiempo fijo.
+-   **del proceso**: cuando se inicia un proceso y eliminarla cuando el
+    proceso finaliza.
+-   **progresivas**: actualizar una sola notificación con
+    actualizaciones progresivas
 
 Todas las vamos a trabajar con la función `showNotification()`
 
-
 ## Notificación transitoria
 
--   La forma más sencilla de usarlo showNotification() es llamarlo con un solo argumento: el mensaje que queres mostrar.
--   De forma predeterminada, el mensaje desaparecerá después de 5 segundos y podemos anular esto con la opción [ duration] o el user puede cancelarlo haciendo click en la cruceita de cerrar
--   Si desea que la notificación sea más visible, se puede configurar el argumento type de modo que tome el css del theme para "message", "warning" o "error"
+-   La forma más sencilla de usarlo showNotification() es llamarlo con
+    un solo argumento: el mensaje que queres mostrar.
+-   De forma predeterminada, el mensaje desaparecerá después de 5
+    segundos y podemos anular esto con la opción \[ duration\] o el user
+    puede cancelarlo haciendo click en la cruceita de cerrar
+-   Si desea que la notificación sea más visible, se puede configurar el
+    argumento type de modo que tome el css del theme para "message",
+    "warning" o "error"
 
-::: columns
-::: column
-
+:::::: columns
+:::: column
 ::: codewindow
-```r
+``` r
 library(shiny)
 
 ui <- fluidPage(
@@ -648,23 +685,21 @@ server <- function(input, output, session) {
 }
 
 shinyApp(ui, server)
-
 ```
 :::
-:::
+::::
 
 ::: column
-
 ![](imagenes/5.06.Notificacion_transitoria.png)
 :::
-:::
+::::::
 
 ## Notificación del proceso
 
-::: columns
-::: column
+:::::: columns
+:::: column
 ::: codewindow
-```r
+``` r
 library(shiny)
 
 ui <- fluidPage(
@@ -689,24 +724,28 @@ server <- function(input, output, session) {
 
 shinyApp(ui, server)
 ```
+:::
+::::
 
-:::
-:::
 ::: column
 ![](imagenes/5.06.Notificacion_proceso.gif)
 :::
-:::
-
+::::::
 
 ## Notificación de actalización progresiva
-Para  simular una notificación progresiva en lugar de mostrar notificaciones distintas (una debajo de la otra como si fuera un sanguchito) podemos jugar con el parámetro **id** de `showNotification()` de forma que va a parecer como si  fuera actualizando el texto de la misma notificación.
+
+Para simular una notificación progresiva en lugar de mostrar
+notificaciones distintas (una debajo de la otra como si fuera un
+sanguchito) podemos jugar con el parámetro **id** de
+`showNotification()` de forma que va a parecer como si fuera
+actualizando el texto de la misma notificación.
 
 El parámetro id sirve para ir concatenando esta simulación
 
-::: columns
-::: column
+:::::: columns
+:::: column
 ::: codewindow
-```r
+``` r
 library(shiny)
 
 ui <- fluidPage(
@@ -740,60 +779,69 @@ server <- function(input, output, session) {
 }
 
 shinyApp(ui, server)
-
 ```
 :::
-:::
+::::
+
 ::: column
 ![](imagenes/5.06.Notificacion_progresiva.gif)
 :::
-:::
+::::::
 
 ## Barras de progreso {.smaller}
 
-La sensación de paso del tiempo es muy importante desde el punto de vista del UX. Lo que estamos buscando con este tipo de elementos es:
+La sensación de paso del tiempo es muy importante desde el punto de
+vista del UX. Lo que estamos buscando con este tipo de elementos es:
 
-::: fragment
+:::: fragment
 ::: {.speech .pink}
-![](assets/cat-theme/profile-01.svg) Proveer distracción: con imágenes, textos (con un dato curioso por ej.), sonidos.
+![](assets/cat-theme/profile-01.svg) Proveer distracción: con imágenes,
+textos (con un dato curioso por ej.), sonidos.
 :::
-:::
+::::
 
-::: fragment
+:::: fragment
 ::: {.speech .purple}
-![](assets/cat-theme/profile-02.svg) Dar una explicación de por qué estas esperando  
+![](assets/cat-theme/profile-02.svg) Dar una explicación de por qué
+estas esperando
 :::
-:::
+::::
 
-::: fragment
+:::: fragment
 ::: {.speech .blue}
-![](assets/cat-theme/profile-03.svg) Dar certeza respecto de cuánto tiempo llevará.
+![](assets/cat-theme/profile-03.svg) Dar certeza respecto de cuánto
+tiempo llevará.
 :::
-:::
-
+::::
 
 ## Barras de progreso
 
 ::: {.spacer style="height:70%;"}
-
-En el libro vemos dos soluciones a las barras de progreso una nativa de shiny y otra con el paquete `waiter{}`
+En el libro vemos dos soluciones a las barras de progreso una nativa de
+shiny y otra con el paquete `waiter{}`
 
 Adicionalmente existe la librería progress
 
-Para ambos casos hay que dividir la tarea principal en un número determinado de partes pequeñas que tomen aproximadamente el mismo tiempo. 
-
+Para ambos casos hay que dividir la tarea principal en un número
+determinado de partes pequeñas que tomen aproximadamente el mismo
+tiempo.
 :::
 
 ## Barras de progreso con shiny {.smaller}
 
-Para crear una barra de progreso con Shiny, necesitas usar withProgress() y incProgress()
+Para crear una barra de progreso con Shiny, necesitas usar
+withProgress() y incProgress()
 
-El primer argumento de incProgress() es la cantidad que se incrementará en la barra de progreso. Por defecto, la barra de progreso empieza en 0 y termina en 1, por lo que el incremento en 1 dividido por el número de pasos garantizará que la barra de progreso esté completa al final del bucle.
+El primer argumento de incProgress() es la cantidad que se incrementará
+en la barra de progreso. Por defecto, la barra de progreso empieza en 0
+y termina en 1, por lo que el incremento en 1 dividido por el número de
+pasos garantizará que la barra de progreso esté completa al final del
+bucle.
 
-::: columns
-::: column
+:::::: columns
+:::: column
 ::: codewindow
-```r
+``` r
 ui <- fluidPage(
   numericInput("steps", "How many steps?", 10),
   actionButton("go", "go"),
@@ -815,25 +863,27 @@ server <- function(input, output, session) {
 }
 ```
 :::
-:::
+::::
+
 ::: column
 ![](imagenes/5.07.Barra_con_shiny.gif)
 :::
-:::
+::::::
 
 ::: notes
-El primer argumento de incProgress()es la cantidad que se incrementará en la barra de progreso. Por defecto, la barra de progreso empieza en 0 y termina en 1, por lo que el incremento en 1 dividido por el número de pasos garantizará que la barra de progreso esté completa al final del bucle.
+El primer argumento de incProgress()es la cantidad que se incrementará
+en la barra de progreso. Por defecto, la barra de progreso empieza en 0
+y termina en 1, por lo que el incremento en 1 dividido por el número de
+pasos garantizará que la barra de progreso esté completa al final del
+bucle.
 :::
-
-
 
 ## El paquete waiter
 
-El paquete waiter tambien nos permite mostrar barras de progreso con waitress y hostess 
-La acción se define en 4 pasos
+El paquete waiter tambien nos permite mostrar barras de progreso con
+waitress y hostess La acción se define en 4 pasos
 
 ::: incremental
-
 -   Poner useWaiter en cualquier parte de tu UI.
 
 -   Crear el waiter
@@ -841,19 +891,21 @@ La acción se define en 4 pasos
 -   Mostrar el waiter
 
 -   Ocultar el waiter
-
 :::
 
 ## Spinners con `waiter` {.smaller}
 
-**waiter()** es ideal para hacer spinners permite hacer una barra un poco más chulas a nivel visual y por ejemplo editar en más detalle el html o agregar un gif (por ej si queres animar el logo institucional)
+**waiter()** es ideal para hacer spinners permite hacer una barra un
+poco más chulas a nivel visual y por ejemplo editar en más detalle el
+html o agregar un gif (por ej si queres animar el logo institucional)
 
-Por ej acá usamos un spin_flower() para que muestre una flor mientras carga el gráfico
+Por ej acá usamos un spin_flower() para que muestre una flor mientras
+carga el gráfico
 
-::: columns
-::: column
+:::::: columns
+:::: column
 ::: codewindow
-```r
+``` r
 library(shiny)
 library(waiter)
 
@@ -894,26 +946,28 @@ server <- function(input, output) {
 }
 
 shinyApp(ui, server)
-
 ```
 :::
-:::
+::::
+
 ::: column
 ![](imagenes/5.08.Spiner_con_waiter.gif)
 :::
-:::
+::::::
 
 ## Barras con waitress {.smaller}
 
-Por deafult waiter muestra un spinner (y podemos elegir entre más de 100 modelos!) pero también podemos hacer barras usando la funcion waitress.Para usarlo llamamops a  `useWaitress()` en el UI y definimos el waitress con `Waitress$new`.
-Dentro de `Waitress$new` nos permite setear a que elemento le vamos a aplicar la barra (`selector`), así como un `theme` `max` y `min` de la barra.
+Por deafult waiter muestra un spinner (y podemos elegir entre más de 100
+modelos!) pero también podemos hacer barras usando la funcion
+waitress.Para usarlo llamamops a `useWaitress()` en el UI y definimos el
+waitress con `Waitress$new`. Dentro de `Waitress$new` nos permite setear
+a que elemento le vamos a aplicar la barra (`selector`), así como un
+`theme` `max` y `min` de la barra.
 
-::: columns
-
-::: column
+:::::: columns
+:::: column
 ::: codewindow
-
-```r
+``` r
 library(shiny)
 library(waiter)
 
@@ -952,27 +1006,25 @@ server <- function(input, output, session) {
 
 shinyApp(ui, server)
 ```
-
 :::
-:::
+::::
 
 ::: column
 ![](imagenes/5.08.Barra_con_waittress.gif)
 :::
-
-:::
+::::::
 
 ## Spinners con `shinycssloaders` {.smaller}
 
-Otra forma muy práctica de hacer spinners es con el paquete `shinycssloaders`
-Simplemente agregamos shinycssloaders::withSpinner() para envolver el output que queremos que *"spinee"* automaticamente y asereje!
+Otra forma muy práctica de hacer spinners es con el paquete
+`shinycssloaders` Simplemente agregamos shinycssloaders::withSpinner()
+para envolver el output que queremos que *"spinee"* automaticamente y
+asereje!
 
-::: columns
-
-::: column
-
+:::::: columns
+:::: column
 ::: codewindow
-```r
+``` r
 library(shinycssloaders)
 
 ui <- fluidPage(
@@ -989,49 +1041,52 @@ server <- function(input, output, session) {
 }
 ```
 :::
-
-:::
+::::
 
 ::: column
 ![](imagenes/5.09.Spiner_con_shinycssloaders.gif)
 :::
-
-:::
+::::::
 
 ## Dudo luego alt+cntrl+supr: confirmación y arrepentiemintos {.smaller}
 
-
-::: fragment
+:::: fragment
 ::: {.speech .pink}
 ![](assets/cat-theme/profile-01.svg) Pedir la confirmación explicita
 :::
-:::
+::::
 
-::: fragment
+:::: fragment
 ::: {.speech .purple}
 ![](assets/cat-theme/profile-02.svg) Botón deshacer
 :::
-:::
+::::
 
-::: fragment
+:::: fragment
 ::: {.speech .blue}
 ![](assets/cat-theme/profile-03.svg) Cesto de reciclaje
 :::
-:::
+::::
 
 ::: notes
-A veces, una acción es potencialmente peligrosa, y conviene asegurarse de que el usuario realmente quiera realizarla o darle la posibilidad de desistir antes de que sea demasiado tarde. En este capitulo se muestran tres técnicas de  básicas.
+A veces, una acción es potencialmente peligrosa, y conviene asegurarse
+de que el usuario realmente quiera realizarla o darle la posibilidad de
+desistir antes de que sea demasiado tarde. En este capitulo se muestran
+tres técnicas de básicas.
 :::
-
 
 ## Confirmación explicita {.smaller}
 
-Con la función `modalDialog()` es como una especie de *aduana* en la que creamos un nuevo modo de interacción: no se puede interactuar con la app principal hasta que no se haya procesado el diálogo. Lo definimos **fuera del server** y después lo usamos de manera dinámica como eventos condicionales **dentro** del mismo
+Con la función `modalDialog()` es como una especie de *aduana* en la que
+creamos un nuevo modo de interacción: no se puede interactuar con la app
+principal hasta que no se haya procesado el diálogo. Lo definimos
+**fuera del server** y después lo usamos de manera dinámica como eventos
+condicionales **dentro** del mismo
 
-::: columns
-::: column
+:::::: columns
+:::: column
 ::: codewindow
-```r
+``` r
 modal_confirm <- modalDialog(
   "Are you sure you want to continue?",
   title = "Deleting files",
@@ -1065,16 +1120,15 @@ server <- function(input, output, session) {
 shinyApp(ui, server)
 ```
 :::
-:::
+::::
 
 ::: column
 ![](https://mastering-shiny.org/demos/action-feedback/dialog.png)
 :::
-:::
+::::::
 
 ## Botón de arrepentimiento
 
 ::: notes
-
 Esto no lo entendí muy bien vos?
 :::
