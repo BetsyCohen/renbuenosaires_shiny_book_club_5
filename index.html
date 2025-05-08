@@ -688,10 +688,10 @@
 <p><img data-src="assets/cat-theme/head-02.svg" class="absolute" style="bottom: 50px; right: 370px; width: 150px; height: 150px; "> <img data-src="assets/cat-theme/head-03.svg" class="absolute" style="bottom: 50px; right: 220px; width: 150px; height: 150px; "> <img data-src="assets/cat-theme/head-04.svg" class="absolute" style="bottom: 50px; right: 70px; width: 150px; height: 150px; "> <img data-src="assets/cat-theme/head-24.svg" class="absolute" style="bottom: 50px; right: 530px; width: 150px; height: 150px; "> <img data-src="assets/cat-theme/head-23.svg" class="absolute" style="bottom: 50px; right: 670px; width: 150px; height: 150px; "> <img data-src="assets/cat-theme/head-22.svg" class="absolute" style="bottom: 50px; right: 830px; width: 150px; height: 150px; "> <img data-src="assets/cat-theme/head-21.svg" class="absolute" style="bottom: 50px; right: 970px; width: 150px; height: 150px; "> <img data-src="assets/cat-theme/head-20.svg" class="absolute" style="bottom: 50px; right: 1100px; width: 150px; height: 150px; "> <br></p>
 <table class="caption-top">
 <colgroup>
-<col style="width: 22%">
-<col style="width: 31%">
-<col style="width: 22%">
-<col style="width: 22%">
+<col style="width: 24%">
+<col style="width: 26%">
+<col style="width: 24%">
+<col style="width: 24%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -730,10 +730,11 @@
 </div>
 </section>
 <section id="notificación-transitoria" class="slide level2 smaller">
-<h2>Notificación transitoria</h2>
+<h2>Notificación <span class="blue-text">transitoria</span></h2>
+<p><img data-src="assets/cat-theme/head-06.svg" class="absolute" style="top: 0px; right: 0px; width: 120px; height: 120px; "></p>
 <p>la forma nás sencilla es <code>showNotification("el mensaje que queres mostrar")</code></p>
 <p><span class="pink-text">duration</span> permite estipular una duración, la predeterminada es 5 seg.</p>
-<p>se puede configurar el argumento type para <span class="blue-text">tunearlo</span> con un css para “message”, “warning” o “error”</p>
+<p>se puede configurar el argumento type para <span class="blue-text">tunearlo</span> con un css para <em>“message”</em>, <em>“warning”</em> o <em>“error”</em></p>
 <div class="columns">
 <div class="column">
 <div class="codewindow">
@@ -761,7 +762,7 @@
 </div></div>
 </section>
 <section id="notificación-del-proceso" class="slide level2">
-<h2>Notificación del proceso</h2>
+<h2>Notificación <span class="brown-text">del proceso</span></h2>
 <div class="columns">
 <div class="column">
 <div class="codewindow">
@@ -793,10 +794,10 @@
 <p><img data-src="imagenes/5.06.Notificacion_proceso.gif"></p>
 </div></div>
 </section>
-<section id="notificación-de-actalización-progresiva" class="slide level2">
-<h2>Notificación de actalización progresiva</h2>
-<p>Para simular una notificación progresiva en lugar de mostrar notificaciones distintas (una debajo de la otra como si fuera un sanguchito) podemos jugar con el parámetro <strong>id</strong> de <code>showNotification()</code> de forma que va a parecer como si fuera actualizando el texto de la misma notificación.</p>
-<p>El parámetro id sirve para ir concatenando esta simulación</p>
+<section id="notificación-de-actualización-progresivas" class="slide level2 smaller">
+<h2>Notificación de actualización <span class="purple-text">progresivas</span></h2>
+<p>Para <strong>simular una notificación progresiva</strong> en lugar de mostrar notis distintas (una debajo de la otra como si fuera un 🥪) podemos jugar con el parámetro <strong><code>id</code></strong> de <code>showNotification()</code> de forma que va a aparecer como si <em>estuviera actualizando el texto de la misma notificación.</em></p>
+<p>👉🏻El parámetro <code>id</code> sirve para ir concatenando esta simulación</p>
 <div class="columns">
 <div class="column">
 <div class="codewindow">
@@ -843,32 +844,45 @@
 <p>La sensación de paso del tiempo es muy importante desde el punto de vista del UX. Lo que estamos buscando con este tipo de elementos es:</p>
 <div class="fragment">
 <div class="speech pink">
-<p><img data-src="assets/cat-theme/profile-01.svg"> Proveer distracción: con imágenes, textos (con un dato curioso por ej.), sonidos.</p>
+<p><img data-src="assets/cat-theme/profile-01.svg" width="70"> <strong>Proveer distracción</strong> con imágenes, textos (con un dato curioso por ej.) o sonidos.</p>
 </div>
 </div>
 <div class="fragment">
 <div class="speech purple">
-<p><img data-src="assets/cat-theme/profile-02.svg"> Dar una explicación de por qué estas esperando</p>
+<p><img data-src="assets/cat-theme/profile-02.svg" width="70"> Brindar una <strong>explicación</strong> de por qué estas esperando</p>
 </div>
 </div>
 <div class="fragment">
 <div class="speech blue">
-<p><img data-src="assets/cat-theme/profile-03.svg"> Dar certeza respecto de cuánto tiempo llevará.</p>
+<p><img data-src="assets/cat-theme/profile-03.svg" width="70"> Dar <strong>certeza</strong> respecto de cuánto tiempo llevará.</p>
 </div>
 </div>
 </section>
 <section id="barras-de-progreso-1" class="slide level2">
 <h2>Barras de progreso</h2>
+<p><img data-src="assets/cat-theme/turso-01.svg" class="absolute" style="top: 200px; right: 100px; width: 220px; height: 220px; "></p>
 <div class="spacer" style="height:70%;">
-<p>En el libro vemos dos soluciones a las barras de progreso una nativa de shiny y otra con el paquete <code>waiter{}</code></p>
-<p>Adicionalmente existe la librería progress</p>
+<p>En el libro vemos dos soluciones: una <span class="blue-text">nativa de shiny</span> y otra con el paquete <code>waiter{}</code></p>
+<p>Adicionalmente existe la librería <span class="purple-text">{progress}</span></p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
 <p>Para ambos casos hay que dividir la tarea principal en un número determinado de partes pequeñas que tomen aproximadamente el mismo tiempo.</p>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="barras-de-progreso-con-shiny" class="slide level2 smaller">
 <h2>Barras de progreso con shiny</h2>
-<p>Para crear una barra de progreso con Shiny, necesitas usar withProgress() y incProgress()</p>
-<p>El primer argumento de incProgress() es la cantidad que se incrementará en la barra de progreso. Por defecto, la barra de progreso empieza en 0 y termina en 1, por lo que el incremento en 1 dividido por el número de pasos garantizará que la barra de progreso esté completa al final del bucle.</p>
+<p>Para crear una barra de progreso con Shiny, necesitas usar <code>withProgress()</code> e <code>incProgress()</code></p>
+<p>El primer argumento de <code>incProgress()</code> es la <span class="pink-text"><strong>cantidad que se incrementará</strong></span> en la barra de progreso. Por defecto, <span class="fragment highlight-blue" data-fragment-index="1">la barra de progreso empieza en 0 y termina en 1, por lo que el incremento en 1 dividido por el número de pasos garantizará que la barra de progreso esté completa al final del bucle.</span></p>
 <div class="columns">
 <div class="column">
 <div class="codewindow">
@@ -893,7 +907,7 @@
 <span id="cb17-19"><a href="" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column">
-<p><img data-src="imagenes/5.07.Barra_con_shiny.gif"></p>
+<p><img data-src="imagenes/5.07.Barra_con_shiny.gif" width="563"></p>
 </div></div>
 <aside class="notes">
 <p>El primer argumento de incProgress()es la cantidad que se incrementará en la barra de progreso. Por defecto, la barra de progreso empieza en 0 y termina en 1, por lo que el incremento en 1 dividido por el número de pasos garantizará que la barra de progreso esté completa al final del bucle.</p>
@@ -911,20 +925,22 @@
 </section>
 <section id="el-paquete-waiter" class="slide level2">
 <h2>El paquete waiter</h2>
-<p>El paquete waiter tambien nos permite mostrar barras de progreso con waitress y hostess La acción se define en 4 pasos</p>
+<p><img data-src="assets/cat-theme/turso-02.svg" class="absolute" style="top: 200px; right: 20px; width: 450px; height: 450px; "></p>
+<p>El paquete <code>{waiter}</code> tambien nos permite mostrar barras de progreso con waitress y hostess</p>
+<p>La acción se define en 4 pasos</p>
 <div>
-<ul>
-<li class="fragment"><p>Poner useWaiter en cualquier parte de tu UI.</p></li>
-<li class="fragment"><p>Crear el waiter</p></li>
-<li class="fragment"><p>Mostrar el waiter</p></li>
-<li class="fragment"><p>Ocultar el waiter</p></li>
-</ul>
+<ol type="1">
+<li class="fragment"><p><span class="blue-text">Poner</span> <code>useWaiter</code> en cualquier parte de tu UI.</p></li>
+<li class="fragment"><p><span class="brown-text">Crear</span> el waiter</p></li>
+<li class="fragment"><p><span class="pink-text">Mostrar</span> el waiter</p></li>
+<li class="fragment"><p><span class="purple-text">Ocultar</span> el waiter</p></li>
+</ol>
 </div>
 </section>
 <section id="spinners-con-waiter" class="slide level2 smaller">
-<h2>Spinners con <code>waiter</code></h2>
-<p><strong>waiter()</strong> es ideal para hacer spinners permite hacer una barra un poco más chulas a nivel visual y por ejemplo editar en más detalle el html o agregar un gif (por ej si queres animar el logo institucional)</p>
-<p>Por ej acá usamos un spin_flower() para que muestre una flor mientras carga el gráfico</p>
+<h2>Spinners con <code>{waiter}</code></h2>
+<p><code>waiter()</code> es ideal para <span class="blue-text">spinners</span>. Permite hacer <strong>barras</strong> más <em>chulas</em> y editar el html o agregar gifs</p>
+<p>👉🏻 Por ej. Acá usamos un <code>spin_flower()</code> para que muestre una 🌻mientras carga el gráfico</p>
 <div class="columns">
 <div class="column">
 <div class="codewindow">
@@ -974,8 +990,8 @@
 </div></div>
 </section>
 <section id="barras-con-waitress" class="slide level2 smaller">
-<h2>Barras con waitress</h2>
-<p>Por deafult waiter muestra un spinner (y podemos elegir entre más de 100 modelos!) pero también podemos hacer barras usando la funcion waitress.Para usarlo llamamops a <code>useWaitress()</code> en el UI y definimos el waitress con <code>Waitress$new</code>. Dentro de <code>Waitress$new</code> nos permite setear a que elemento le vamos a aplicar la barra (<code>selector</code>), así como un <code>theme</code> <code>max</code> y <code>min</code> de la barra.</p>
+<h2>Barras con <code>waitress</code></h2>
+<p>Por default waiter muestra un spinner (y podemos elegir entre más de 100 modelos!) pero también podemos hacer <span class="blue-text">barras</span> usando la funcion <code>useWaitress()</code>en el UI definiendo el waitress con <code>Waitress$new</code>. Dentro de <code>Waitress$new</code> nos permite setear a que elemento le vamos a aplicar la barra (<code>selector</code>), así como un <code>theme</code>, <code>max</code> y <code>min</code> de la barra.</p>
 <div class="columns">
 <div class="column">
 <div class="codewindow">
@@ -1023,7 +1039,7 @@
 </section>
 <section id="spinners-con-shinycssloaders" class="slide level2 smaller">
 <h2>Spinners con <code>shinycssloaders</code></h2>
-<p>Otra forma muy práctica de hacer spinners es con el paquete <code>shinycssloaders</code> Simplemente agregamos shinycssloaders::withSpinner() para envolver el output que queremos que <em>“spinee”</em> automaticamente y asereje!</p>
+<p>Otra forma muy práctica de hacer spinners es con el paquete <code>{shinycssloaders}</code>. Simplemente agregamos <code>shinycssloaders::withSpinner()</code> para envolver el output que queremos que <em>“spinee”</em> automaticamente y asereje!</p>
 <div class="columns">
 <div class="column">
 <div class="codewindow">
@@ -1046,8 +1062,8 @@
 <p><img data-src="imagenes/5.09.Spiner_con_shinycssloaders.gif"></p>
 </div></div>
 </section>
-<section id="dudo-luego-altcntrlsupr-confirmación-y-arrepentiemintos" class="slide level2 smaller">
-<h2>Dudo luego alt+cntrl+supr: confirmación y arrepentiemintos</h2>
+<section id="dudo-luego-altcntrlsupr-confirmación-y-arrepentimientos" class="slide level2 smaller">
+<h2>Dudo luego <code>alt</code>+<code>cntrl</code>+<code>supr</code>: confirmación y arrepentimientos</h2>
 <div class="fragment">
 <div class="speech pink">
 <p><img data-src="assets/cat-theme/profile-01.svg"> Pedir la confirmación explicita</p>
@@ -1079,7 +1095,8 @@
 </section>
 <section id="confirmación-explicita" class="slide level2 smaller">
 <h2>Confirmación explicita</h2>
-<p>Con la función <code>modalDialog()</code> es como una especie de <em>aduana</em> en la que creamos un nuevo modo de interacción: no se puede interactuar con la app principal hasta que no se haya procesado el diálogo. Lo definimos <strong>fuera del server</strong> y después lo usamos de manera dinámica como eventos condicionales <strong>dentro</strong> del mismo</p>
+<p><img data-src="assets/cat-theme/head-21.svg" class="absolute" style="bottom: 50px; right: 50px; width: 150px; height: 150px; "> <img data-src="assets/cat-theme/head-21.svg" class="absolute" style="bottom: 50px; right: 180px; width: 150px; height: 150px; "> <img data-src="assets/cat-theme/head-21.svg" class="absolute" style="bottom: 50px; right: 310px; width: 150px; height: 150px; "> <img data-src="assets/cat-theme/head-21.svg" class="absolute" style="bottom: 50px; right: 440px; width: 150px; height: 150px; "></p>
+<p>Con la función <code>modalDialog()</code> es como una especie de <em>aduana</em> en la que creamos un nuevo modo de interacción: <span class="purple-text">no se puede interactuar con la app principal hasta que no se haya procesado el diálogo</span>. Lo definimos <strong>fuera del server</strong> y después lo usamos de manera dinámica como <em>eventos condicionales</em> <strong>dentro</strong> del mismo</p>
 <div class="columns">
 <div class="column">
 <div class="codewindow">

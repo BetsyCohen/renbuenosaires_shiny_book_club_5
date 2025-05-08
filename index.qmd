@@ -456,7 +456,8 @@ width="300" height="300"}
 ¿Cómo **pausamos la ejecución** para que no ocurra nada hasta que se
 cumplan ciertas condiciones en nuestro `reactive{}`? [La función `req()`
 nos permite agregar requisitos para la ejecucción dentro del
-server]{.fragment .highlight-purple fragment-index="1"}. Por ej. ponemos como requisito que *no muestre el resultado si no es un n° par*
+server]{.fragment .highlight-purple fragment-index="1"}. Por ej. ponemos
+como requisito que *no muestre el resultado si no es un n° par*
 
 ::::: columns
 ::: column
@@ -502,7 +503,10 @@ shinyApp(ui, server)
 ![](assets/cat-theme/head-21.svg){.absolute bottom="150" right="250"
 width="150" height="150"}
 
-A veces queremos *freezar* más de una condición y esperar a que el usuario termine de hacer algo. Por ej. en este caso necesitamos que termine de elegir el idioma (`selectInput()`) y ponga sunombre (`textInput()`) para que se ejecute el **greetings** en el `paste0()`
+A veces queremos *freezar* más de una condición y esperar a que el
+usuario termine de hacer algo. Por ej. en este caso necesitamos que
+termine de elegir el idioma (`selectInput()`) y ponga sunombre
+(`textInput()`) para que se ejecute el **greetings** en el `paste0()`
 
 :::::: columns
 :::: column
@@ -576,19 +580,22 @@ server <- function(input, output, session) {
 :::
 ::::::
 
-~(\*)\ Ejemplo\ retomado\ del\ capítulo\ 1~
+~(\*) Ejemplo retomado del capítulo 1~
 
 ## Validar multiples entradas y salidas con `validate()` {.smaller}
 
-![](assets/cat-theme/head-02.svg){.absolute bottom=50 right=370 width="150" height="150"}
-![](assets/cat-theme/head-03.svg){.absolute bottom=50 right=220 width="150" height="150"}
-![](assets/cat-theme/head-04.svg){.absolute bottom=50 right=70 width="150" height="150"}
+![](assets/cat-theme/head-02.svg){.absolute bottom="50" right="370"
+width="150" height="150"} ![](assets/cat-theme/head-03.svg){.absolute
+bottom="50" right="220" width="150" height="150"}
+![](assets/cat-theme/head-04.svg){.absolute bottom="50" right="70"
+width="150" height="150"}
 
 La función integrada de shiny `validate()` nos va a permitir [controlar
 múltiples entradas]{.pink-text} **y** tirar el [mensaje]{.blue-text}.
 
-El siguiente código muestra un ejemplo sencillo donde [no queremos]{.brown-text}
-registrar ni calcular la raíz cuadrada de valores negativos en x.
+El siguiente código muestra un ejemplo sencillo donde [no
+queremos]{.brown-text} registrar ni calcular la raíz cuadrada de valores
+negativos en x.
 
 :::::: columns
 :::: column
@@ -626,42 +633,53 @@ server <- function(input, output, session) {
 
 ## Cual sería la diferencia entre `validate()` y `req()` {.smaller}
 
-![](assets/cat-theme/head-02.svg){.absolute bottom=50 right=370 width="150" height="150"}
-![](assets/cat-theme/head-03.svg){.absolute bottom=50 right=220 width="150" height="150"}
-![](assets/cat-theme/head-04.svg){.absolute bottom=50 right=70 width="150" height="150"}
-![](assets/cat-theme/head-24.svg){.absolute bottom=50 right=530 width="150" height="150"}
-![](assets/cat-theme/head-23.svg){.absolute bottom=50 right=670 width="150" height="150"}
-![](assets/cat-theme/head-22.svg){.absolute  bottom=50 right=830 width="150" height="150"}
-![](assets/cat-theme/head-21.svg){.absolute bottom=50 right=970 width="150" height="150"}
-![](assets/cat-theme/head-20.svg){.absolute bottom=50 right=1100 width="150" height="150"}
-<br>
+![](assets/cat-theme/head-02.svg){.absolute bottom="50" right="370"
+width="150" height="150"} ![](assets/cat-theme/head-03.svg){.absolute
+bottom="50" right="220" width="150" height="150"}
+![](assets/cat-theme/head-04.svg){.absolute bottom="50" right="70"
+width="150" height="150"} ![](assets/cat-theme/head-24.svg){.absolute
+bottom="50" right="530" width="150" height="150"}
+![](assets/cat-theme/head-23.svg){.absolute bottom="50" right="670"
+width="150" height="150"} ![](assets/cat-theme/head-22.svg){.absolute
+bottom="50" right="830" width="150" height="150"}
+![](assets/cat-theme/head-21.svg){.absolute bottom="50" right="970"
+width="150" height="150"} ![](assets/cat-theme/head-20.svg){.absolute
+bottom="50" right="1100" width="150" height="150"} <br>
 
 | Función | ¿Qué hace? | ¿Dónde se usa? | ¿Qué muestra si falla? |
-|-----------------|-----------------------|-----------------|-----------------|
+|------------------|-------------------|------------------|------------------|
 | `req()` | Verifica que un valor exista o cumpla una condición mínima | Cualquier parte del servidor | **Nada** (el output queda en blanco) |
 | `validate()` | Verifica una condición lógica y **muestra un mensaje de error personalizado** | Solo dentro de `render*()` outputs | El **mensaje de error** que le pongas |
 
 ## Notificaciones
 
-Las [notificaciones]{.pink-text} aparecen apiladas en la parte **inferior
-derecha de la app.**
+Las [notificaciones]{.pink-text} aparecen apiladas en la parte
+**inferior derecha de la app.**
 
 `showNotification()` tiene los siguientes tipos de notificación:
 
-:::incremental
--   [transitoria]{.blue-text}: desaparece después de un período de tiempo fijo.
--   [del proceso]{.brown-text}: aparece cuando se inicia un proceso y al finalizar desaparece.
--   [progresivas]{.purple-text}: actualiza una sola notificación con actualizaciones progresivas
+::: incremental
+-   [transitoria]{.blue-text}: desaparece después de un período de
+    tiempo fijo.
+-   [del proceso]{.brown-text}: aparece cuando se inicia un proceso y al
+    finalizar desaparece.
+-   [progresivas]{.purple-text}: actualiza una sola notificación con
+    actualizaciones progresivas
 :::
 
+## Notificación [transitoria]{.blue-text} {.smaller}
 
-## Notificación transitoria {.smaller}
+![](assets/cat-theme/head-06.svg){.absolute top="0" right="0"
+width="120" height="120"}
 
-la forma nás sencilla es `showNotification("el mensaje que queres mostrar")`
+la forma nás sencilla es
+`showNotification("el mensaje que queres mostrar")`
 
-[duration]{.pink-text} permite estipular una duración, la predeterminada es 5 seg.
+[duration]{.pink-text} permite estipular una duración, la predeterminada
+es 5 seg.
 
-se puede configurar el argumento type para [tunearlo]{.blue-text} con un css para "message", "warning" o "error"
+se puede configurar el argumento type para [tunearlo]{.blue-text} con un
+css para *"message"*, *"warning"* o *"error"*
 
 :::::: columns
 :::: column
@@ -694,7 +712,7 @@ shinyApp(ui, server)
 :::
 ::::::
 
-## Notificación del proceso
+## Notificación [del proceso]{.brown-text}
 
 :::::: columns
 :::: column
@@ -732,15 +750,14 @@ shinyApp(ui, server)
 :::
 ::::::
 
-## Notificación de actalización progresiva
+## Notificación de actualización [progresivas]{.purple-text} {.smaller}
 
-Para simular una notificación progresiva en lugar de mostrar
-notificaciones distintas (una debajo de la otra como si fuera un
-sanguchito) podemos jugar con el parámetro **id** de
-`showNotification()` de forma que va a parecer como si fuera
-actualizando el texto de la misma notificación.
+Para **simular una notificación progresiva** en lugar de mostrar notis
+distintas (una debajo de la otra como si fuera un 🥪) podemos jugar con
+el parámetro **`id`** de `showNotification()` de forma que va a aparecer
+como si *estuviera actualizando el texto de la misma notificación.*
 
-El parámetro id sirve para ir concatenando esta simulación
+👉🏻El parámetro `id` sirve para ir concatenando esta simulación
 
 :::::: columns
 :::: column
@@ -795,48 +812,54 @@ vista del UX. Lo que estamos buscando con este tipo de elementos es:
 
 :::: fragment
 ::: {.speech .pink}
-![](assets/cat-theme/profile-01.svg) Proveer distracción: con imágenes,
-textos (con un dato curioso por ej.), sonidos.
+![](assets/cat-theme/profile-01.svg){width="70"} **Proveer distracción**
+con imágenes, textos (con un dato curioso por ej.) o sonidos.
 :::
 ::::
 
 :::: fragment
 ::: {.speech .purple}
-![](assets/cat-theme/profile-02.svg) Dar una explicación de por qué
-estas esperando
+![](assets/cat-theme/profile-02.svg){width="70"} Brindar una
+**explicación** de por qué estas esperando
 :::
 ::::
 
 :::: fragment
 ::: {.speech .blue}
-![](assets/cat-theme/profile-03.svg) Dar certeza respecto de cuánto
-tiempo llevará.
+![](assets/cat-theme/profile-03.svg){width="70"} Dar **certeza**
+respecto de cuánto tiempo llevará.
 :::
 ::::
 
 ## Barras de progreso
 
-::: {.spacer style="height:70%;"}
-En el libro vemos dos soluciones a las barras de progreso una nativa de
-shiny y otra con el paquete `waiter{}`
+![](assets/cat-theme/turso-01.svg){.absolute top="200" right="100"
+width="220" height="220"}
 
-Adicionalmente existe la librería progress
+:::: {.spacer style="height:70%;"}
+En el libro vemos dos soluciones: una [nativa de shiny]{.blue-text} y
+otra con el paquete `waiter{}`
 
+Adicionalmente existe la librería [{progress}]{.purple-text}
+
+::: callout-important
 Para ambos casos hay que dividir la tarea principal en un número
 determinado de partes pequeñas que tomen aproximadamente el mismo
 tiempo.
 :::
+::::
 
 ## Barras de progreso con shiny {.smaller}
 
 Para crear una barra de progreso con Shiny, necesitas usar
-withProgress() y incProgress()
+`withProgress()` e `incProgress()`
 
-El primer argumento de incProgress() es la cantidad que se incrementará
-en la barra de progreso. Por defecto, la barra de progreso empieza en 0
-y termina en 1, por lo que el incremento en 1 dividido por el número de
-pasos garantizará que la barra de progreso esté completa al final del
-bucle.
+El primer argumento de `incProgress()` es la [**cantidad que se
+incrementará**]{.pink-text} en la barra de progreso. Por defecto, [la
+barra de progreso empieza en 0 y termina en 1, por lo que el incremento
+en 1 dividido por el número de pasos garantizará que la barra de
+progreso esté completa al final del bucle.]{.fragment .highlight-blue
+fragment-index="1"}
 
 :::::: columns
 :::: column
@@ -866,7 +889,7 @@ server <- function(input, output, session) {
 ::::
 
 ::: column
-![](imagenes/5.07.Barra_con_shiny.gif)
+![](imagenes/5.07.Barra_con_shiny.gif){width="563"}
 :::
 ::::::
 
@@ -880,26 +903,30 @@ bucle.
 
 ## El paquete waiter
 
-El paquete waiter tambien nos permite mostrar barras de progreso con
-waitress y hostess La acción se define en 4 pasos
+![](assets/cat-theme/turso-02.svg){.absolute top="200" right="20"
+width="450" height="450"}
+
+El paquete `{waiter}` tambien nos permite mostrar barras de progreso con
+waitress y hostess
+
+La acción se define en 4 pasos
 
 ::: incremental
--   Poner useWaiter en cualquier parte de tu UI.
+1.  [Poner]{.blue-text} `useWaiter` en cualquier parte de tu UI.
 
--   Crear el waiter
+2.  [Crear]{.brown-text} el waiter
 
--   Mostrar el waiter
+3.  [Mostrar]{.pink-text} el waiter
 
--   Ocultar el waiter
+4.  [Ocultar]{.purple-text} el waiter
 :::
 
-## Spinners con `waiter` {.smaller}
+## Spinners con `{waiter}` {.smaller}
 
-**waiter()** es ideal para hacer spinners permite hacer una barra un
-poco más chulas a nivel visual y por ejemplo editar en más detalle el
-html o agregar un gif (por ej si queres animar el logo institucional)
+`waiter()` es ideal para [spinners]{.blue-text}. Permite hacer
+**barras** más *chulas* y editar el html o agregar gifs
 
-Por ej acá usamos un spin_flower() para que muestre una flor mientras
+👉🏻 Por ej. Acá usamos un `spin_flower()` para que muestre una 🌻mientras
 carga el gráfico
 
 :::::: columns
@@ -955,14 +982,14 @@ shinyApp(ui, server)
 :::
 ::::::
 
-## Barras con waitress {.smaller}
+## Barras con `waitress` {.smaller}
 
-Por deafult waiter muestra un spinner (y podemos elegir entre más de 100
-modelos!) pero también podemos hacer barras usando la funcion
-waitress.Para usarlo llamamops a `useWaitress()` en el UI y definimos el
-waitress con `Waitress$new`. Dentro de `Waitress$new` nos permite setear
-a que elemento le vamos a aplicar la barra (`selector`), así como un
-`theme` `max` y `min` de la barra.
+Por default waiter muestra un spinner (y podemos elegir entre más de 100
+modelos!) pero también podemos hacer [barras]{.blue-text} usando la
+funcion `useWaitress()`en el UI definiendo el waitress con
+`Waitress$new`. Dentro de `Waitress$new` nos permite setear a que
+elemento le vamos a aplicar la barra (`selector`), así como un `theme`,
+`max` y `min` de la barra.
 
 :::::: columns
 :::: column
@@ -1017,9 +1044,9 @@ shinyApp(ui, server)
 ## Spinners con `shinycssloaders` {.smaller}
 
 Otra forma muy práctica de hacer spinners es con el paquete
-`shinycssloaders` Simplemente agregamos shinycssloaders::withSpinner()
-para envolver el output que queremos que *"spinee"* automaticamente y
-asereje!
+`{shinycssloaders}`. Simplemente agregamos
+`shinycssloaders::withSpinner()` para envolver el output que queremos
+que *"spinee"* automaticamente y asereje!
 
 :::::: columns
 :::: column
@@ -1048,7 +1075,7 @@ server <- function(input, output, session) {
 :::
 ::::::
 
-## Dudo luego alt+cntrl+supr: confirmación y arrepentiemintos {.smaller}
+## Dudo luego `alt`+`cntrl`+`supr`: confirmación y arrepentimientos {.smaller}
 
 :::: fragment
 ::: {.speech .pink}
@@ -1077,11 +1104,16 @@ tres técnicas de básicas.
 
 ## Confirmación explicita {.smaller}
 
+![](assets/cat-theme/head-21.svg){.absolute bottom=50 right=50 width="150" height="150"}
+![](assets/cat-theme/head-21.svg){.absolute bottom=50 right=180 width="150" height="150"}
+![](assets/cat-theme/head-21.svg){.absolute bottom=50 right=310 width="150" height="150"}
+![](assets/cat-theme/head-21.svg){.absolute bottom=50 right=440 width="150" height="150"}
+
 Con la función `modalDialog()` es como una especie de *aduana* en la que
-creamos un nuevo modo de interacción: no se puede interactuar con la app
-principal hasta que no se haya procesado el diálogo. Lo definimos
-**fuera del server** y después lo usamos de manera dinámica como eventos
-condicionales **dentro** del mismo
+creamos un nuevo modo de interacción: [no se puede interactuar con la app
+principal hasta que no se haya procesado el diálogo]{.purple-text}. Lo definimos
+**fuera del server** y después lo usamos de manera dinámica como *eventos
+condicionales* **dentro** del mismo
 
 :::::: columns
 :::: column
