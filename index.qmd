@@ -331,7 +331,7 @@ refuerzan este estímulo
 ![](assets/cat-theme/head-12.svg){.absolute bottom="0" left="0"
 width="150" height="150"}
 
-El capítulo se recorren 4 posibles formas de feedback usando el ayudín
+En el capítulo se recorren 4 posibles formas de feedback usando el ayudín
 de `shinyFeedback` y `waiter`.
 
 :::::: columns
