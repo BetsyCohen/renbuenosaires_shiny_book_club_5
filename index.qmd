@@ -404,9 +404,9 @@ shinyApp(ui, server)
 -   En el usamos alguna de las funciones de retroalimentación
     `feedback()`, `feedbackWarning()`, `feedbackDanger()`y
     `feedbackSuccess()`
--   Todas tienen \[tres argumentos obligatorios\].{blue-text}
+-   Todas tienen \[tres argumentos obligatorios\]{.blue-text}
     (**inputId**, **show**, **text**) y de manera optativa podemos
-    poner: \[color\].{purple-text} y \[icon\].{purple-text}
+    personalizar con: \[color\].{purple-text} y \[icon\]{.purple-text}
 :::
 ::::
 ::::::
@@ -456,8 +456,7 @@ width="300" height="300"}
 ¿Cómo **pausamos la ejecución** para que no ocurra nada hasta que se
 cumplan ciertas condiciones en nuestro `reactive{}`? [La función `req()`
 nos permite agregar requisitos para la ejecucción dentro del
-server]{.fragment .highlight-purple fragment-index="1"}. Por ej. podemos
-poner como requisito que *no muestre el resultado erróneo*
+server]{.fragment .highlight-purple fragment-index="1"}. Por ej. ponemos como requisito que *no muestre el resultado si no es un n° par*
 
 ::::: columns
 ::: column
@@ -503,11 +502,7 @@ shinyApp(ui, server)
 ![](assets/cat-theme/head-21.svg){.absolute bottom="150" right="250"
 width="150" height="150"}
 
-A veces tenemos más de una condición que queremos *freezar* y hay que
-esperar a que el usuario termine de hacer algo. Por ej. en este caso
-necesitamos que termine de elegir el idioma (`selectInput()`) y ponga su
-nombre (`textInput()`) para que se ejecute el **greetings** en el
-`paste0()`
+A veces queremos *freezar* más de una condición y esperar a que el usuario termine de hacer algo. Por ej. en este caso necesitamos que termine de elegir el idioma (`selectInput()`) y ponga sunombre (`textInput()`) para que se ejecute el **greetings** en el `paste0()`
 
 :::::: columns
 :::: column
@@ -631,6 +626,16 @@ server <- function(input, output, session) {
 
 ## Cual sería la diferencia entre `validate()` y `req()` {.smaller}
 
+![](assets/cat-theme/head-02.svg){.absolute bottom=50 right=370 width="150" height="150"}
+![](assets/cat-theme/head-03.svg){.absolute bottom=50 right=220 width="150" height="150"}
+![](assets/cat-theme/head-04.svg){.absolute bottom=50 right=70 width="150" height="150"}
+![](assets/cat-theme/head-24.svg){.absolute bottom=50 right=530 width="150" height="150"}
+![](assets/cat-theme/head-23.svg){.absolute bottom=50 right=670 width="150" height="150"}
+![](assets/cat-theme/head-22.svg){.absolute  bottom=50 right=830 width="150" height="150"}
+![](assets/cat-theme/head-21.svg){.absolute bottom=50 right=970 width="150" height="150"}
+![](assets/cat-theme/head-20.svg){.absolute bottom=50 right=1100 width="150" height="150"}
+<br>
+
 | Función | ¿Qué hace? | ¿Dónde se usa? | ¿Qué muestra si falla? |
 |-----------------|-----------------------|-----------------|-----------------|
 | `req()` | Verifica que un valor exista o cumpla una condición mínima | Cualquier parte del servidor | **Nada** (el output queda en blanco) |
@@ -638,30 +643,25 @@ server <- function(input, output, session) {
 
 ## Notificaciones
 
-Las notificaciones las vamos a ir viendo apiladas en la parte inferior
-derecha de la app.
+Las [notificaciones]{.pink-text} aparecen apiladas en la parte **inferior
+derecha de la app.**
 
-Tipos de notificación:
+`showNotification()` tiene los siguientes tipos de notificación:
 
--   **transitoria**: desaparece automáticamente después de un período de
-    tiempo fijo.
--   **del proceso**: cuando se inicia un proceso y eliminarla cuando el
-    proceso finaliza.
--   **progresivas**: actualizar una sola notificación con
-    actualizaciones progresivas
+:::incremental
+-   [transitoria]{.blue-text}: desaparece después de un período de tiempo fijo.
+-   [del proceso]{.brown-text}: aparece cuando se inicia un proceso y al finalizar desaparece.
+-   [progresivas]{.purple-text}: actualiza una sola notificación con actualizaciones progresivas
+:::
 
-Todas las vamos a trabajar con la función `showNotification()`
 
-## Notificación transitoria
+## Notificación transitoria {.smaller}
 
--   La forma más sencilla de usarlo showNotification() es llamarlo con
-    un solo argumento: el mensaje que queres mostrar.
--   De forma predeterminada, el mensaje desaparecerá después de 5
-    segundos y podemos anular esto con la opción \[ duration\] o el user
-    puede cancelarlo haciendo click en la cruceita de cerrar
--   Si desea que la notificación sea más visible, se puede configurar el
-    argumento type de modo que tome el css del theme para "message",
-    "warning" o "error"
+la forma nás sencilla es `showNotification("el mensaje que queres mostrar")`
+
+[duration]{.pink-text} permite estipular una duración, la predeterminada es 5 seg.
+
+se puede configurar el argumento type para [tunearlo]{.blue-text} con un css para "message", "warning" o "error"
 
 :::::: columns
 :::: column

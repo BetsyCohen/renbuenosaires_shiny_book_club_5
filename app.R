@@ -1,16 +1,26 @@
 library(shiny)
 
 ui <- fluidPage(
-  textInput("name", "¿Cómo te llamás?"),
-  textOutput("greeting")
+  numericInput("x", "x", value = 0),
+  selectInput("trans", "transformation", 
+              choices = c("square", "log", "square-root")
+  ),
+  textOutput("out")
 )
 
 server <- function(input, output, session) {
-  output$greeting <- renderText({
-    paste0("Hola ", input$name, "!")
+  output$out <- renderText({
+    if (input$x < 0 && input$trans %in% c("log", "square-root")) {
+      validate("x can not be negative for this transformation")
+    }
+    
+    switch(input$trans,
+           square = input$x ^ 2,
+           "square-root" = sqrt(input$x),
+           log = log(input$x)
+    )
   })
 }
-
 shinyApp(ui, server)
 
 

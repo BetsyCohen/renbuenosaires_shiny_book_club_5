@@ -511,7 +511,7 @@
 <ul>
 <li class="fragment">Agregamos <code>useShinyFeedback()</code> en el ui.</li>
 <li class="fragment">En el usamos alguna de las funciones de retroalimentación <code>feedback()</code>, <code>feedbackWarning()</code>, <code>feedbackDanger()</code>y <code>feedbackSuccess()</code></li>
-<li class="fragment">Todas tienen [tres argumentos obligatorios].{blue-text} (<strong>inputId</strong>, <strong>show</strong>, <strong>text</strong>) y de manera optativa podemos poner: [color].{purple-text} y [icon].{purple-text}</li>
+<li class="fragment">Todas tienen [tres argumentos obligatorios]{.blue-text} (<strong>inputId</strong>, <strong>show</strong>, <strong>text</strong>) y de manera optativa podemos personalizar con: [color].{purple-text} y [icon]{.purple-text}</li>
 </ul>
 </div>
 </div></div>
@@ -549,7 +549,7 @@
 <section id="pausar-la-ejecución-bajo-requisitos" class="slide level2 smaller">
 <h2>Pausar la ejecución bajo requisitos</h2>
 <p><img data-src="assets/cat-theme/turso-04.svg" class="absolute" style="top: 330px; right: 100px; width: 300px; height: 300px; "></p>
-<p>¿Cómo <strong>pausamos la ejecución</strong> para que no ocurra nada hasta que se cumplan ciertas condiciones en nuestro <code>reactive{}</code>? <span class="fragment highlight-purple" data-fragment-index="1">La función <code>req()</code> nos permite agregar requisitos para la ejecucción dentro del server</span>. Por ej. podemos poner como requisito que <em>no muestre el resultado erróneo</em></p>
+<p>¿Cómo <strong>pausamos la ejecución</strong> para que no ocurra nada hasta que se cumplan ciertas condiciones en nuestro <code>reactive{}</code>? <span class="fragment highlight-purple" data-fragment-index="1">La función <code>req()</code> nos permite agregar requisitos para la ejecucción dentro del server</span>. Por ej. ponemos como requisito que <em>no muestre el resultado si no es un n° par</em></p>
 <div class="columns">
 <div class="column">
 <div class="cell">
@@ -584,7 +584,7 @@
 <section id="pausar-la-ejecución-bajo-requisitos-1" class="slide level2 smaller">
 <h2>Pausar la ejecución bajo requisitos</h2>
 <p><img data-src="assets/cat-theme/head-21.svg" class="absolute" style="bottom: 150px; right: 250px; width: 150px; height: 150px; "></p>
-<p>A veces tenemos más de una condición que queremos <em>freezar</em> y hay que esperar a que el usuario termine de hacer algo. Por ej. en este caso necesitamos que termine de elegir el idioma (<code>selectInput()</code>) y ponga su nombre (<code>textInput()</code>) para que se ejecute el <strong>greetings</strong> en el <code>paste0()</code></p>
+<p>A veces queremos <em>freezar</em> más de una condición y esperar a que el usuario termine de hacer algo. Por ej. en este caso necesitamos que termine de elegir el idioma (<code>selectInput()</code>) y ponga sunombre (<code>textInput()</code>) para que se ejecute el <strong>greetings</strong> en el <code>paste0()</code></p>
 <div class="columns">
 <div class="column">
 <div class="codewindow">
@@ -685,6 +685,7 @@
 </section>
 <section id="cual-sería-la-diferencia-entre-validate-y-req" class="slide level2 smaller">
 <h2>Cual sería la diferencia entre <code>validate()</code> y <code>req()</code></h2>
+<p><img data-src="assets/cat-theme/head-02.svg" class="absolute" style="bottom: 50px; right: 370px; width: 150px; height: 150px; "> <img data-src="assets/cat-theme/head-03.svg" class="absolute" style="bottom: 50px; right: 220px; width: 150px; height: 150px; "> <img data-src="assets/cat-theme/head-04.svg" class="absolute" style="bottom: 50px; right: 70px; width: 150px; height: 150px; "> <img data-src="assets/cat-theme/head-24.svg" class="absolute" style="bottom: 50px; right: 530px; width: 150px; height: 150px; "> <img data-src="assets/cat-theme/head-23.svg" class="absolute" style="bottom: 50px; right: 670px; width: 150px; height: 150px; "> <img data-src="assets/cat-theme/head-22.svg" class="absolute" style="bottom: 50px; right: 830px; width: 150px; height: 150px; "> <img data-src="assets/cat-theme/head-21.svg" class="absolute" style="bottom: 50px; right: 970px; width: 150px; height: 150px; "> <img data-src="assets/cat-theme/head-20.svg" class="absolute" style="bottom: 50px; right: 1100px; width: 150px; height: 150px; "> <br></p>
 <table class="caption-top">
 <colgroup>
 <col style="width: 22%">
@@ -718,22 +719,21 @@
 </section>
 <section id="notificaciones" class="slide level2">
 <h2>Notificaciones</h2>
-<p>Las notificaciones las vamos a ir viendo apiladas en la parte inferior derecha de la app.</p>
-<p>Tipos de notificación:</p>
+<p>Las <span class="pink-text">notificaciones</span> aparecen apiladas en la parte <strong>inferior derecha de la app.</strong></p>
+<p><code>showNotification()</code> tiene los siguientes tipos de notificación:</p>
+<div>
 <ul>
-<li><strong>transitoria</strong>: desaparece automáticamente después de un período de tiempo fijo.</li>
-<li><strong>del proceso</strong>: cuando se inicia un proceso y eliminarla cuando el proceso finaliza.</li>
-<li><strong>progresivas</strong>: actualizar una sola notificación con actualizaciones progresivas</li>
+<li class="fragment"><span class="blue-text">transitoria</span>: desaparece después de un período de tiempo fijo.</li>
+<li class="fragment"><span class="brown-text">del proceso</span>: aparece cuando se inicia un proceso y al finalizar desaparece.</li>
+<li class="fragment"><span class="purple-text">progresivas</span>: actualiza una sola notificación con actualizaciones progresivas</li>
 </ul>
-<p>Todas las vamos a trabajar con la función <code>showNotification()</code></p>
+</div>
 </section>
-<section id="notificación-transitoria" class="slide level2">
+<section id="notificación-transitoria" class="slide level2 smaller">
 <h2>Notificación transitoria</h2>
-<ul>
-<li>La forma más sencilla de usarlo showNotification() es llamarlo con un solo argumento: el mensaje que queres mostrar.</li>
-<li>De forma predeterminada, el mensaje desaparecerá después de 5 segundos y podemos anular esto con la opción [ duration] o el user puede cancelarlo haciendo click en la cruceita de cerrar</li>
-<li>Si desea que la notificación sea más visible, se puede configurar el argumento type de modo que tome el css del theme para “message”, “warning” o “error”</li>
-</ul>
+<p>la forma nás sencilla es <code>showNotification("el mensaje que queres mostrar")</code></p>
+<p><span class="pink-text">duration</span> permite estipular una duración, la predeterminada es 5 seg.</p>
+<p>se puede configurar el argumento type para <span class="blue-text">tunearlo</span> con un css para “message”, “warning” o “error”</p>
 <div class="columns">
 <div class="column">
 <div class="codewindow">
