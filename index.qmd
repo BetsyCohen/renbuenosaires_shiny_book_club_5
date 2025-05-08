@@ -1249,5 +1249,5 @@ server <- function(input, output, session) {
 #  {.theme-section2}
 
 ::: {.r-fit-text style="transform: translateY(-15rem);"}
-Muchas gracias
+¡Muchas gracias!
 :::
