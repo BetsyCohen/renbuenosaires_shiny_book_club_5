@@ -404,9 +404,9 @@ shinyApp(ui, server)
 -   En el usamos alguna de las funciones de retroalimentación
     `feedback()`, `feedbackWarning()`, `feedbackDanger()`y
     `feedbackSuccess()`
--   Todas tienen \[tres argumentos obligatorios\]{.blue-text}
+-   Todas tienen [tres argumentos obligatorios]{.blue-text}
     (**inputId**, **show**, **text**) y de manera optativa podemos
-    personalizar con: \[color\].{purple-text} y \[icon\]{.purple-text}
+    personalizar con: [color]{.purple-text} y [icon]{.purple-text}
 :::
 ::::
 ::::::
@@ -1163,26 +1163,31 @@ shinyApp(ui, server)
 
 ## Botón de arrepentimiento {.smaller}
 
-![](assets/cat-theme/turso-03.svg){.absolute top=100 right=100 width="450" height="450"}
-
+![](assets/cat-theme/turso-03.svg){.absolute top="100" right="100"
+width="450" height="450"}
 
 :::::: columns
-::::  {.column width="50%"}
+:::: {.column width="50%"}
 ::: {.spacer style="height:50%;"}
-A veces [confirmar acciones con un *“¿estás seguro?”*]{.purple-text} no sirve
+A veces [confirmar acciones con un *“¿estás seguro?”*]{.purple-text} no
+sirve
 
 Porque los usuarios se acostumbran a clickear [Sí]{.blue-text}
 
-Esta opción permite [deshacer]{.pink-text} luego de ejecutar la acción (como pasa con los mails). 
+Esta opción permite [deshacer]{.pink-text} luego de ejecutar la acción
+(como pasa con los mails).
 
-Para eso se puede utilizar `observeEvent()`, se puede llamar a `runLater()` esperar X segundos y recién realizar la acción o eliminarla.
+Para eso se puede utilizar `observeEvent()`, se puede llamar a
+`runLater()` esperar X segundos y recién realizar la acción o
+eliminarla.
 :::
 ::::
-:::: {.column width="50%"}
-::::
-:::::: 
 
-## [Ejemplo]{.pink-text} de botón de arrepentimiento 
+::: {.column width="50%"}
+:::
+::::::
+
+## [Ejemplo]{.pink-text} de botón de arrepentimiento
 
 :::::: columns
 :::: column
