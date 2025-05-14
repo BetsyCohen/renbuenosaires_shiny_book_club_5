@@ -20,7 +20,7 @@ editor:
 
 ### Mastering Shiny Book Club
 
-Betsy Cohen & Ariana Bardauil
+[Betsy Cohen](https://www.linkedin.com/in/betsabe1984/) & [Ariana Bardauil](https://www.linkedin.com/in/ariana-bardauil/)
 
 ## Objetivos de este encuentro
 
@@ -331,7 +331,7 @@ refuerzan este estímulo
 ![](assets/cat-theme/head-12.svg){.absolute bottom="0" left="0"
 width="150" height="150"}
 
-En el capítulo se recorren 4 posibles formas de feedback usando el ayudín
+En el capítulo se recorren 5 posibles formas de feedback usando el ayudín
 de `shinyFeedback` y `waiter`.
 
 :::::: columns
@@ -755,7 +755,7 @@ shinyApp(ui, server)
 Para **simular una notificación progresiva** en lugar de mostrar notis
 distintas (una debajo de la otra como si fuera un 🥪) podemos jugar con
 el parámetro **`id`** de `showNotification()` de forma que va a aparecer
-como si *estuviera actualizando el texto de la misma notificación.*
+*como si estuviera actualizando el texto de la misma notificación.*
 
 👉🏻El parámetro `id` sirve para ir concatenando esta simulación
 
@@ -763,8 +763,6 @@ como si *estuviera actualizando el texto de la misma notificación.*
 :::: column
 ::: codewindow
 ``` r
-library(shiny)
-
 ui <- fluidPage(
   actionButton("start", "Iniciar carga de datos"),
   tableOutput("data")
@@ -789,7 +787,7 @@ server <- function(input, output, session) {
     notify("Ortogonalizando matrices...", id = id)
     Sys.sleep(1)
     
-    mtcars  # dataset incorporado en R
+    mtcars  
   })
   
   output$data <- renderTable(head(data()))
@@ -843,6 +841,7 @@ otra con el paquete `waiter{}`
 Adicionalmente existe la librería [{progress}]{.purple-text}
 
 ::: callout-important
+### Importante
 Para ambos casos hay que dividir la tarea principal en un número
 determinado de partes pequeñas que tomen aproximadamente el mismo
 tiempo.
@@ -1091,7 +1090,7 @@ server <- function(input, output, session) {
 
 :::: fragment
 ::: {.speech .blue}
-![](assets/cat-theme/profile-03.svg) Cesto de reciclaje
+![](assets/cat-theme/profile-03.svg) Papelera de reciclaje
 :::
 ::::
 
